@@ -1,271 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   <title>Tag: mvc iOS | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/tags/mvc-iOS/">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Hexo">
 
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
-  
-  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
 
   
-
 </head>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+
+<!--
+<body class="home-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-2014-08-14-mvc" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/14/2014-08-14-mvc/" class="article-date">
-  <time datetime="2014-08-14T03:13:34.000Z" itemprop="datePublished">Aug 14 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/MVC-iOS/">MVC iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/14/2014-08-14-mvc/">mvc</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html" target="_blank" rel="external">IOS官方文档</a>的解释和<a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/downloads-2010-fall" target="_blank" rel="external">standford公开课</a>的课件，就发现原来在IOS中是这么回事</p>
-<h3 id="Model">Model</h3>
-<blockquote>
-<p>encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）</p>
-</blockquote>
-<p><strong>功能</strong>：封装App要用到的数据并定义相关的逻辑操作，Model和其他model存在相关relation（一对一，一对多，多对多等），数据要进行持久化（存在文件或者数据库中来进行重用），model只关心数据，只定义相关数据和操作，不去关心用户界面。</p>
-<p><strong>communication</strong>： 用户操作通过controller来更改Model，Model的相关数据的更改来通知Controoler去更新View</p>
-<h3 id="View">View</h3>
-<blockquote>
-<p>present information to the user (your controller’s minions)</p>
-</blockquote>
-<p><strong>功能</strong>：在应用程序中展示用户可以看见的界面以及相应相关用户操作，View视图的更新是通过Controller操作的,当然了视图是可以缓存数据来提升程序性能，视图应该是可复用和可配置化的，因此UIKit中提供了大量的View object，诸如TableView，ScrollView</p>
-<h3 id="Controller">Controller</h3>
-<blockquote>
-<p>tie the model to the view(How your model is presented to the user UI logic)</p>
-</blockquote>
-<p><strong>功能</strong>：是视图和模型的中间者，视图的更新都是控制器从model中取出数据进行更新</p>
-<ol>
-<li>mediating controller 中介控制器</li>
-<li>coordinating controller 协调控制器</li>
-</ol>
-<p>SmallTaclk中的MVC</p>
-<ul>
-<li>Composite： View object有多个视图嵌套组成</li>
-<li>Strategy:  controller object给一个或者多个view object实现策略，view object委托controller来处理相关的接口行为</li>
-<li>Observer:</li>
-</ul>
-<p><img src="/images/2014/8/traditional_mvc.gif" alt="Alt text"></p>
-<p>Cocoa中得MVC<br><img src="/images/2014/8/cocoa_mvc.gif" alt="Alt text"></p>
-<p>Cocode跟传统的MVC设计方式最大的不同在于把View和Model中得通信删去了，view不能观察model的数据状态的改变来更新自己的view，原因主要在于View和model设计成高度复用的Object，去掉view和object的联系就是内聚解耦的过程<br>其中官网是这么解释的：</p>
-<ul>
-<li>如果在程序中使用绑定机制，如果视图能直接观察到模型中的属性，那么NSController及其子类的优势（selection and placeholder）不会体现出来</li>
-<li>如果不使用绑定机制，对于一个已经存在的视图必须子类化来观察model的改变</li>
-</ul>
-<p>最后来看一下stanford这张图<br><img src="/images/2014/8/stanford_mvc.png" alt="Alt text"></p>
-<p>这张图把IOS中model，view，controller的关系阐述的真心简洁明了，鞭辟入里啊！！</p>
-<h4 id="Controller_and_View">Controller and View</h4>
-<ol>
-<li>controller通过outlet来控制view上面的object</li>
-<li>view通过target-action来controller来响应响应的事件</li>
-<li>controller来设置自己作为view的委托，实现view中控件对应的事件protocol</li>
-<li>controller总是view的data source，用Model信息来更新view或者根据view来收集model信息</li>
-</ol>
-<h4 id="Controller_and_model">Controller and model</h4>
-<p>Model主要是通过广播机制（KVO）来通知controller自身信息的更改</p>
-<h4 id="view_and_model">view and model</h4>
-<p>两者不应该有任何关系，The model should be UI independent.(理由前面已经叙述了)</p>
-<h3 id="MVC优点">MVC优点</h3>
-<ul>
-<li>代码重用（多个视图可以共享一个模型，主要因为我们已经把数据和业务logic从表示层分开了）</li>
-<li>更好地定义接口</li>
-<li>良好的扩展性</li>
-</ul>
-<h3 id="MVC缺点">MVC缺点</h3>
-<p>完全理解MVC模式不是特别容易（特别对于我等工程经验不足的人，有时候还是只能从表面意义上体会他的好处）</p>
 
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/14/2014-08-14-mvc/" data-id="cwvrlbi39yd72h60" class="article-share-link">Share</a>
+<main class="content" role="main">
+  
+  <article class="post">
+    <header class="post-header">
+      <span class="post-meta">
+      <time datetime="2014-08-14T03:13:34.000Z" itemprop="datePublished">
+          Aug 14 2014
+      </time>
+    
+    
+    | 
+    <a href='/tags/mvc-iOS/'>mvc iOS</a>
+    
+    
+</span>
+      <h2 class="post-title"><a href="/2014/08/14/2014-08-14-mvc/">mvc</a></h2>
+    </header>
+    <section class="post-excerpt">
+      <p>
       
+        其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
+Model
+
+encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）
+
+功能：封装App要用到的数据并定义相关的逻辑操作，Model和其他model存在相关re
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mvc-iOS/">mvc iOS</a></li></ul>
-
-    </footer>
-  </div>
+      </p>
+      
+      <p>
+          <a href="/2014/08/14/2014-08-14-mvc/" class="excerpt-link">Read More...</a>
+      </p>
+      
+    </section>
+  </article>
   
-</article>
-
-
-  
-  
-</section>
-        
-          <aside id="sidebar">
-  
+  <nav class="pagination" role="pagination">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MVC-iOS/">MVC iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Refactor/">Refactor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/psychology/">psychology</a><span class="category-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-  
+    <span class="page-number">Page 1 of 1</span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Refactor/">Refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conclude/">conclude</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mvc-iOS/">mvc iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plan/">plan</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyschology-cc/">pyschology cc</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
+  </nav>
+</main>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Refactor/" style="font-size: NaNpx;">Refactor</a><a href="/tags/conclude/" style="font-size: NaNpx;">conclude</a><a href="/tags/mvc-iOS/" style="font-size: NaNpx;">mvc iOS</a><a href="/tags/plan/" style="font-size: NaNpx;">plan</a><a href="/tags/pyschology-cc/" style="font-size: NaNpx;">pyschology cc</a>
-    </div>
-  </div>
 
+      
+<footer class="site-footer">
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2015/01/05/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/30/2014-12-30-i-am-just-a-child/">i_am_just_a_child</a>
-          </li>
-        
-          <li>
-            <a href="/2014/12/01/2014-12-01-refactor/">Refactor</a>
-          </li>
-        
-          <li>
-            <a href="/2014/08/17/2014-08-17-tarqie-plan/">tarqie-plan</a>
-          </li>
-        
-          <li>
-            <a href="/2014/08/14/2014-08-14-mvc/">mvc</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
   </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
 
 
 
-<script src="/js/script.js" type="text/javascript"></script>
 
 
   </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
 </body>
 </html>
