@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tag: Refactor | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/tags/Refactor/">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2014-12-01-refactor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/01/2014-12-01-refactor/" class="article-date">
+  <time datetime="2014-12-01T11:44:51.000Z" itemprop="datePublished">Dec 1 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Refactor/">Refactor</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/01/2014-12-01-refactor/">Refactor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在写代码的时候，发现之前写的代码各种ifelse嵌套，类函数过多，函数体过长，函数变量命名不清晰，遂决定重构之，于此同时看了<a href="http://book.douban.com/subject/5333564/" target="_blank" rel="external">重构</a>这本书，收益颇多！</p>
+<p>整本书从data，method，class，module，system的这几个层面去讲如何重构，重构的基本原则以及注意事项依次来编写高质量，可维护，可扩展的代码，主要读书笔记如下：</p>
+<h3 id="何为重构">何为重构</h3>
+<blockquote>
+<p>在不改变软件可观察行为的前提之下，使用一系列重构方法，对软件内部结构进行调整，提高代码的可理解性，降低扩展成本</p>
+</blockquote>
+<h3 id="重构的原动力">重构的原动力</h3>
+<p>当代码的设计无法帮助我们轻松添加新的特性（<strong>无法扩展</strong>），因此需要重构程序使程序满足以下条件：</p>
+<ul>
+<li>容易阅读</li>
+<li>所有逻辑都只在唯一地点指定</li>
+<li>新的改动不会危及现有行为</li>
+<li>尽可能简单表达条件逻辑</li>
+</ul>
+<p>在重构的过程中我们会发现<strong>Middle Tier</strong>(中间层)会被经常使用，使用中间层的好处主要体现在以下几个方面：</p>
+<ul>
+<li>允许逻辑共享，单个函数在多个地方进行调用</li>
+<li>分开解释意图和实现(类和函数的名字可以表达自己的意图)</li>
+<li>隔离变化</li>
+<li>封装条件逻辑</li>
+</ul>
+<h3 id="何时重构">何时重构</h3>
+<blockquote>
+<p>如果每次对代码的更改都会做重复的事情，那么就必须重构</p>
+</blockquote>
+<p><strong>修改接口</strong></p>
+<blockquote>
+<p>对于对象而言可以分开修改软件模块的实现和接口，对于模块的实现可以任意进行修改而不影响他人，但是不能随意更改接口</p>
+</blockquote>
+<h3 id="重构方法">重构方法</h3>
+<h4 id="简化条件表达式">简化条件表达式</h4>
+<p>当函数中如果出现多层if，else嵌套，一长串的switch语句，程序的可读性是非常差的，我们可以用以下几点重构之：</p>
+<ul>
+<li>从if，then，else中<strong>分解条件表达式</strong>（提炼独立的函数），突出条件逻辑，更清楚的表明每个分支的作用（<strong>增加可读性，见其名知其意</strong>）</li>
+<li><strong>合并条件表达式</strong>（如果一系列条件测试得到相同的结果，那么将所有提交测试提炼成一个独立的函数）（<strong>减少条件表达式</strong>）</li>
+<li><strong>合并重复的条件片段</strong>条件表达式中每个分支都有相同的代码，在相同代码不随条件表达式的改变而改变的前提下，将相同代码移至条件表达式外（<strong>减少冗余代码</strong>）</li>
+<li><strong>以卫语句取代嵌套条件表达式</strong>使用卫语句表现所有的特殊情况，卫语句要么从函数中返回，要么抛出一个异常（针对单一出口的观点，最好在不影响代码可读性的情况下才使用）</li>
+<li><strong>以多态取代条件表达式</strong>：因为多态的出现，导致基于类型的switch语句和基于类型名称的if-else语句很少出现,对于多个if-else或者switch只用一个对基类的判断即可，那么在运行时中自动会调用相应类的方法（<strong>不必询问对象是什么，只管调用对应的的行为</strong>）（<strong>减少switch 的case语句</strong>）</li>
+<li><strong>引入null对象</strong>P260<ul>
+<li>实现一个空对象，覆盖基类的isNull方法（）返回true，</li>
+<li>在所有对对象判断是否为空的地方，直接调用isNull方法</li>
+<li>对空对象实现默认的空行为，这样可以不用判断是否为空，直接调用相应地函数（如果对象为空对象，那么会自动调用空行为）</li>
+<li>空对象可能会返回空对象</li>
+</ul>
+</li>
+<li><strong>引入断言</strong>增加代码可读性并且帮助调试</li>
+</ul>
+<p>对于简化条件表达式，我认为<a href="http://book.douban.com/subject/1951158/" target="_blank" rel="external">代码大全</a>讲了更多地简化技巧</p>
+<h4 id="Organizing_Data">Organizing Data</h4>
+<p>这一章更多地是侧重于不同情况下组织数据的一些技巧</p>
+<ul>
+<li><strong>将引用对象改为值对象</strong>值对象主要是不可变性，所以当确定一个引用对象不可变的时候，去掉setter方法，私有化成员变量，重写hashCode(集合类通过hashCode来快速定位对象的位置）和equals（来判断两者的地址是否相同）方法</li>
+<li><strong>用类替代类型码</strong>，人的血型可以用类来进行封装p220（类型码不影响主类）</li>
+<li><strong>用子类替代类型码</strong>，（类型码影响类的变化，可以用子类进行多态化处理,类的静态实例化函数通过类型码进行动态创建子类，子类实现抽象方法（getType）来返回正确地子类类型</li>
+<li><strong>用state/strategy取代类型码</strong>实质跟多态取代子类相似</li>
+</ul>
+<h4 id="Moving_Features_Between_Objects">Moving Features Between Objects</h4>
+<p>核心就是如何抽象公共部分，较少冗余代码</p>
+<ul>
+<li><strong>move method</strong>:将公共方法提取至基类</li>
+<li><strong>move field</strong></li>
+<li><strong>extra class</strong>（提炼类）</li>
+<li><strong>inline class</strong> (类内联化，将一个类的所有method和field都移入新的类)</li>
+<li><strong>hide delegate</strong>(隐藏委托关系) 在服务类建立客户所需的所有函数，用以隐藏委托关系Person Department Manager</li>
+<li><strong>remove middle man</strong> （移除中间人）（当客户端每次使用受托类的新特性的时候，都必须在服务端增加委托函数，所以新特性比较多得时候，客户端可以直接调用受托类</li>
+<li><strong>introduce foreign method</strong> 在客户类中建立一个函数，以第一参数形式传入一个服务类实例</li>
+</ul>
+<h4 id="简化函数调用">简化函数调用</h4>
+<p>最重要的还是给函数和参数取一个好名字把</p>
+<ul>
+<li><strong>rename method</strong></li>
+<li><strong>add parameter</strong></li>
+<li><strong>remove parameter</strong></li>
+<li><strong>将查询函数和修改函数分离</strong>（任何有返回值的函数都不应该有side effect，不要使一个函数同时包含查询和修改）</li>
+<li><strong>preserve whole object</strong>（保持对象的完整性，不用传递多个参数，可以传递一个对象，保持代码的整洁性）</li>
+<li><strong>以函数取代参数</strong></li>
+<li><strong>引入参数对象</strong>（都是为了缩短参数列长度）</li>
+<li><strong>remove setting  method</strong> （某个字段设置为final的，不可改变）</li>
+<li><strong>hide method</strong>（当一个函数如果不被其他类引用时）</li>
+<li><strong>以工厂函数取代构造函数</strong></li>
+<li><strong>封装向下转型</strong></li>
+<li><strong>以异常取代错误代码</strong></li>
+<li><strong>以测试取代异常</strong></li>
+</ul>
+<h4 id="处理继承关系">处理继承关系</h4>
+<p>这章侧重于如何处理子类和父类的field和method的关系</p>
+<ul>
+<li><strong>pull up field</strong> 字段上移</li>
+<li><strong>pull up method</strong> 函数上移</li>
+<li><strong>构造函数本体上移</strong></li>
+<li><strong>函数下移</strong></li>
+<li><strong>字段下移</strong></li>
+<li><strong>extract subclass</strong> 提炼子类</li>
+<li><strong>提炼超类</strong></li>
+</ul>
+<h2 id="感想">感想</h2>
+<p>是个人都能写出让机器看懂的代码，但并不是所有人能写出其他人能看懂的代码，所以培养良好的代码风格是一件非常主要的事情，今后可能会遵守下面三条规则去规范自己培养良好的编码习惯</p>
+<ul>
+<li>注意函数命名，代码风格(各个语言参看对应系统库的代码风格)，尽量写clean code</li>
+<li>在写代码之前，想好代码为什么这么写，这样写有什么好处，是否易于扩展，几个月之后自己是否还看得懂，别人是否看得懂</li>
+<li>找人code review，牛人对代码的认知以及整个项目的理解是跟自己不一样的，多问为什么这么设计以及这样设计的好处并思考这样设计的优缺点</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/12/01/2014-12-01-refactor/" data-id="vyi3o5j6fqbwzz9q" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refactor/">Refactor</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/MVC-iOS/">MVC iOS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Refactor/">Refactor</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/plan/">plan</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/psychology/">psychology</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Refactor/">Refactor</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/conclude/">conclude</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mvc-iOS/">mvc iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/plan/">plan</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pyschology-cc/">pyschology cc</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Refactor/" style="font-size: 10.00px;">Refactor</a><a href="/tags/conclude/" style="font-size: 10.00px;">conclude</a><a href="/tags/mvc-iOS/" style="font-size: 10.00px;">mvc iOS</a><a href="/tags/plan/" style="font-size: 20.00px;">plan</a><a href="/tags/pyschology-cc/" style="font-size: 10.00px;">pyschology cc</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">December 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/01/05/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/30/2014-12-30-i-am-just-a-child/">2014-12-30-i_am_just_a_child</a>
+          </li>
+        
+          <li>
+            <a href="/2014/12/01/2014-12-01-refactor/">Refactor</a>
+          </li>
+        
+          <li>
+            <a href="/2014/08/17/2014-08-17-tarqie-plan/">tarqie-plan</a>
+          </li>
+        
+          <li>
+            <a href="/2014/08/17/2014-08-17-tarqie-plan-1/">tarqie-plan</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+
+  </div>
+</body>
+</html>
