@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Inside Tomcat Source Code | cc</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="cc">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">cc</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2015-03-13T02:53:34.000Z" itemprop="datePublished">
+          Mar 13 2015
+      </time>
+    
+    
+    | 
+    <a href='/tags/tomcat/'>tomcat</a>
+    
+    
+</span>
+    <h1 class="post-title">Inside Tomcat Source Code</h1>
+    <section class="post-content">
+      <h1 id="Tomcat">Tomcat</h1>
+<p>这两周主要看了下Tomcat7的源代码，若有所悟，遂写下本篇文章记录下我对Tomcat部分核心功能的理解，主要包括以下3个方面</p>
+<ol>
+<li>Tomcat是如何启动的</li>
+<li>一次http连接请求，是如何转换成Request对象</li>
+<li>从Request对象的生成到Request对象传递给Filter或者servlet，中间做了什么处理</li>
+</ol>
+<h4 id="Tomcat_server_的内部结构">Tomcat server 的内部结构</h4>
+<p><img src="/images/2015/3/tomcat_server_structure.png" alt="Alt text"></p>
+<p>默认情况下Server组件会包含一个service组件，service组件会包含Engine和Connector组件，Engine组件会包含host组件，host组件会包含Context组件</p>
+<p>首先我们要看一下这几个组件各自的功能</p>
+<ol>
+<li><p><strong>Server</strong><br>它代表整个容器,是 Tomcat 实例的顶层元素.由 org.apache.catalina.Server 接口来定义. 它用来控制 Tomcat 实例的启动与停止。在 Tomcat 启动阶段,通过 server 来控制的各 个 service 的启动。启动完成后它启动独立的端口监听,用来接收 Tomcat 的停止命令。 当接收到停止命令后它会触发 service 的停止与注销。并提供一个接口让其它程序能够访 问到这个 Service 集合、同时要维护它所包含的所有 Service 的生命周期,包括服务 初始化、服务终结、Service 定位与查找</p>
+</li>
+<li><p><strong>Service</strong><br>Service 是一个抽象的服务封装组件,是 web 容器的一个独立的运行单元。它具备了一个 web 容器所需要的监听连接,servlet 查找与调用,Session 创建与管理,日志服务等常用 功能。Service 只是在 Connector 和 Container 外面多包一层,把它们组装在一起,向外 面提供服务,一个 Service 可以设置多个 Connector,但是只能有一个 Engine Container 容器,将多个 Connector 收到的连接发送到同一个 Engine Container 进行处理，在tomcat中默认有两个connector，一个负责Http请求的处理，另一个负责AJP请求的处理</p>
+</li>
+<li><p><strong>Connector</strong><br>主要负责服务器的端口监听、接收浏览 器的发过来的 TCP 连接请求,将收到的 HTTP 请求信息转换成 Request 对象,并将 Request 提交 Engine 组件去执行,将执行完成后所得到的 Response 对象转换 HTTP 的响应信息返回 给浏览器。</p>
+</li>
+<li><p><strong>Engine</strong><br>Engine是Servlet处理器的一个实例，即servlet引擎, 一个Engine可以包含多个host</p>
+</li>
+<li><p><strong>host</strong><br>Engine容器中用于接收请求并进行相应处理的主机或虚拟主机，一个host可以对应多个Context</p>
+</li>
+<li><p><strong>Context</strong><br>每一个webapp最终都是以Context的形式存在，每个Context对应一个根路径和请求URL路径,host:port/path</p>
+</li>
+</ol>
+<p>每个组件的包含关系已经在<strong>server.xml</strong>中进行了对应的声明，在整个server初始化的过程中，会解析该文件生成对应的组件对象并确定组件之间的包含关系, server.xml 核心代码如下所示</p>
+<pre><code>&lt;Server <span class="variable">port=</span><span class="string">"8005"</span> <span class="variable">shutdown=</span><span class="string">"SHUTDOWN"</span>&gt;
+</code></pre><service name="Catalina">        
+
+<pre><code>            &lt;Connector <span class="variable">port=</span><span class="string">"8080"</span> <span class="variable">protocol=</span><span class="string">"HTTP/1.1"</span>
+           <span class="variable">connectionTimeout=</span><span class="string">"20000"</span>
+           <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
+           &lt;Connector <span class="variable">port=</span><span class="string">"8009"</span> <span class="variable">protocol=</span><span class="string">"AJP/1.3"</span> <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
+           &lt;Engine <span class="variable">name=</span><span class="string">"Catalina"</span> <span class="variable">defaultHost=</span><span class="string">"localhost"</span>&gt;
+             &lt;Host <span class="variable">name=</span><span class="string">"localhost"</span>  <span class="variable">appBase=</span><span class="string">"webapps"</span>
+        <span class="variable">unpackWARs=</span><span class="string">"true"</span> <span class="variable">autoDeploy=</span><span class="string">"true"</span>&gt;
+          &lt;Valve <span class="variable">className=</span><span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="variable">directory=</span><span class="string">"logs"</span>
+           <span class="variable">prefix=</span><span class="string">"localhost_access_log."</span> <span class="variable">suffix=</span><span class="string">".txt"</span>
+           <span class="variable">pattern=</span><span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;
+
+  &lt;/Host&gt;
+&lt;/Engine&gt;
+</code></pre><p>  </p></service><br><p></p>
+<h4 id="server的初始化和启动">server的初始化和启动</h4>
+<p>在整个server的启动过程中，首先要确定一个<strong>LifeCycle</strong>生命周期的概念<br><img src="/images/2015/3/lifecycle.png" alt="Alt text"><br>每个组件都会直接或间接继承抽象类LifecycleBase，LifecycleBase会实现Lifecycle接口，实现了init(),start(),stop(),destroy()等模板方法，在对应模板方法中会调用相应的抽象方法诸如initInternal，startInternal()等，这样保证了tomcat能统一管理所有组件的生命周期</p>
+<p>server的启动是从BootStrap的main方法开始<br><img src="/images/2015/3/bootstrap_main.png" alt="Alt text"></p>
+<p>主要代码是如下3句代码</p>
+<pre><code>bootstrap.<span class="keyword">init</span>() 
+</code></pre><p>该行代码主要做了以下几件事</p>
+<ol>
+<li>设置catalina.home、catalina.base系统属性</li>
+<li>创建commonLoader、catalinaLoader、sharedLoader类加载器</li>
+<li><p>初始化Bootstrap对象</p>
+<pre><code>daemon.load(<span class="keyword">args</span>);
+</code></pre></li>
+</ol>
+<p>主要干了两件事</p>
+<ol>
+<li>创建一个Digester对象，将当前对象压入Digester里的对象栈顶，根据inputSource里设置的文件xml路径及所创建的Digester对象所包含的解析规则生成相应对象，并调用相应方法将对象之间关联起来。</li>
+<li><p>依次调用每个组件的init方法</p>
+<pre><code> daemon.start();
+</code></pre></li>
+</ol>
+<p>该代码会链式调用每个组件的start()方法，在start方法中对调对应的startInternal方法</p>
+<p>在这里要重点讲一下Connector，Tomcat默认会开启两个Http8080端口接收http请求，和AJP8009端口接收ajp请求<br>Connector会有一个JIOEndpoint对象<br><strong>JIoEndpoint</strong>：处理请求的TCP链接，一个监听器线程拿到一个socket，并创建工作线程来处理该请求，更高级的Endpoint会使用队列复用线程</p>
+<p>在JIOEndpoint的startInternal方法中会开启两个线程一个是<strong>Acceptor</strong>线程监听tcp/ip连接并传递给对应的processor和一个异步超时的线程，如下图429行和432行所示<br><img src="/images/2015/3/start_acceptor_thread.png" alt="Alt text"></p>
+<p>当整个tomcat启动会有如下几个线程在运行，其中除了main以外其他都为守护线程<br><img src="/images/2015/3/thread_after_boot.png" alt="Alt text"></p>
+<h4 id="http请求的处理">http请求的处理</h4>
+<p>前面提到了Acceptor线程是监听tcp/ip链接，我们看一下具体代码如下图所示，216行从serversocket获取连接请求，231行会调用processSocket处理该请求</p>
+<p><img src="/images/2015/3/acceptor.png.png" alt="Alt text"></p>
+<p>JIoEndpoint中的processSocket方法会新开一个线程处理请求，保证当前线程不会被阻塞，如528行所示<br><img src="/images/2015/3/process_socket.png" alt="Alt text"></p>
+<p>SocketProcessor会调用AbstractConnectionHandler的process方法,该方法会调用AbstractHttp11Processor的process方法, 在该方法中会解析请求的请求行，请求头部并封装成Tomcat内置对象org.apache.coyote.Request，整个处理流程的时序图如下所示<br><img src="/images/2015/3/socket_process_sequence_diagram.png" alt="Alt text"></p>
+<h4 id="Request请求的转发处理">Request请求的转发处理</h4>
+<p><img src="/images/2015/3/tomcat_value_forward.png" alt="Alt text"><br>这张图描述当用户发出的请求被解析成Request对象后，会被protocolHandler传递给Engine的Pipeline的ValueA，然后传递给ValueB，EngineValue以此类推最终会传递给context的FilterChain和Servlet，在servlet中生成的response会逆向进行传递直至传给protocolHandler<br><img src="/images/2015/3/value_forward_diagram.png" alt="Alt text"></p>
+<p>在StandardWrapperValue的invoke方法中会将request请求传递给FilterChain处理如下图205行所示<br><img src="/images/2015/3/filter_dofilter.png" alt="Alt text"></p>
+<p>ApplicationFilterChain的doFilter()方法<br><img src="/images/2015/3/dofilter.png" alt="Alt text"></p>
+<p>在doFilter方法中会调用internalDoFilter方法，如果filterChain还有下一个filter，则调用下一个filter的doFilter方法，若当前filter为最后一个filter，则会调用servlet的service方法如下图305行所示<br><img src="/images/2015/3/servlet_service.png" alt="Alt text"></p>
+<p>在整个Request传递处理的过程中我们会注意到有一个叫<strong>Value</strong>的对象，Tomcat7中一个管道pipeline可以包含多个阀（Valve），这些阀共分为两类，一类叫基础阀（通过getBasic、setBasic方法调用），一类是普通阀（通过addValve、removeValve调用）。管道都是包含在一个容器当中，所以API里还有getContainer和setContainer方法。一个管道一般有一个基础阀（通过setBasic添加），可以有0到多个普通阀（通过addValve添加）。<br>所有的阀类都会实现org.apache.catalina.Valve这个接口</p>
+<p>这里可以看出容器内的Engine、Host、Context、Wrapper容器组件的实现的共通点：<br>1.这些组件内部都有一个成员变量pipeline，因为它们都是从org.apache.catalina.core.ContainerBase类继承来的，pipeline就定义在这个类中。所以每一个容器内部都关联了一个管道。<br>2.都是在类的构造方法中设置管道内的基础阀。<br>3.所有的基础阀的实现最后都会调用其下一级容器（直接从请求中获取下一级容器对象的引用）的getPipeline().getFirst().invoke()方法，直到Wrapper组件。因为Wrapper是对一个Servlet的包装，所以它的基础阀内部调用的过滤器链的doFilter方法和Servlet的service方法。</p>
+<p>自此对于服务器的启动，以及浏览器发出一次socket连接请求之后，tomcat容器内部的运转处理流程已经有了一个大致的理解</p>
+<h4 id="设计模式">设计模式</h4>
+<p>可以想象Tomcat源代码运用了大量的设计模式来组织自己的代码使代码有更好的可读性，程序有更好地扩展性，其中Tomcat源代码主要运用了以下几个设计模式</p>
+<ol>
+<li><strong>facade门面模式</strong>：在一个大的系统中有多个子系统时，子系统如果不想暴露自己的内部数据给其他系统，那么就可以设计一个门面，把对象封装起来，其他系统通过该门面访问对应对象的数据，其中对Request，Response的封装，以及ApplcationContext到ServletContext的封装都用到了该模式</li>
+<li><strong>观察者设计模式</strong>：也叫发布-订阅模式，也就是事件监听机制，通常在某个事件发生的前后会触发一些操作，其中控制组件生命周期的Lifecycle就是这种模式的体现。LifecycleListener代表的是抽象观察者，定义了一个lifecycleEvent方法，该方法就是当主题发生变化时要执行的方法，当组件的生命周期发生变化时，会调用LifecycleSupport的fireLifecycleEvent方法，该方法调用所有监听者的lifecycleEvent方法<br><img src="/images/2015/3/observer_fireLifecycle.png" alt="Alt text"></li>
+<li><strong>Command命令</strong>：主要用来封装命令，把发出命令的责任和执行命令的责任分开，在tomcat中connector和container之间，server创建HttpConnector对象，然后创建命令HttpProcessor对象，并把它交给ContainerBase容器进行处理，这样ContainerBase可以通过不同的方式来处理请求</li>
+<li><strong>责任链</strong>：这个设计模式也是Tomcat中Container设计的基础，整个容器就是通过一个链连接在一起的，这个链一直将请求正确地传递给最终处理请求的那个servlet。责任链模式实际上是很多对象由每个对象对其下家的引用而连接起来形成的一条链，请求在这条链上传递，在tomcat中，请求从Engine到host在到context一直到Wrapper都是通过这条链进行传递</li>
+</ol>
+<h4 id="参考链接">参考链接</h4>
+<ol>
+<li><a href="http://tyrion.iteye.com/?page=2" target="_blank" rel="external">Tomcat7源码解析</a></li>
+<li><a href="http://book.douban.com/subject/1943128/" target="_blank" rel="external">How Tomcat Works</a></li>
+<li><a href="http://book.douban.com/subject/19965586/" target="_blank" rel="external">深入分析Java Web技术内幕</a></li>
+</ol>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>cc</h4>
+    <p>IT狗，会勾手</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=IT狗，会勾手 ?url=http://yoursite.com/2015/03/13/Inside-Tomcat-Source-Code/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2015/03/13/Inside-Tomcat-Source-Code/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/03/13/Inside-Tomcat-Source-Code/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2015/03/13/Inside-Tomcat-Source-Code/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logo">•</span>
+    
+    <a class="older-posts" href="/2015/02/11/BriefHistoryOfHumanKind-md/">
+        人类简史 →
+    </a>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">cc</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-mail"  href="/about/"><span>About</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
