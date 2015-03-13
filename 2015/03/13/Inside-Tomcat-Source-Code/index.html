@@ -56,11 +56,10 @@
 </span>
     <h1 class="post-title">Inside Tomcat Source Code</h1>
     <section class="post-content">
-      <h1 id="Tomcat">Tomcat</h1>
-<p>这两周主要看了下Tomcat7的源代码，若有所悟，遂写下本篇文章记录下我对Tomcat部分核心功能的理解，主要包括以下3个方面</p>
+      <p>这两周主要看了下Tomcat7的源代码，若有所悟，遂写下本篇文章记录下我对Tomcat部分核心功能的理解，主要包括以下3个方面</p>
 <ol>
 <li>Tomcat是如何启动的</li>
-<li>一次http连接请求，是如何转换成Request对象</li>
+<li>一次http请求，是如何转换成Request对象</li>
 <li>从Request对象的生成到Request对象传递给Filter或者servlet，中间做了什么处理</li>
 </ol>
 <h4 id="Tomcat_server_的内部结构">Tomcat server 的内部结构</h4>
@@ -83,9 +82,9 @@
 </ol>
 <p>每个组件的包含关系已经在<strong>server.xml</strong>中进行了对应的声明，在整个server初始化的过程中，会解析该文件生成对应的组件对象并确定组件之间的包含关系, server.xml 核心代码如下所示</p>
 <pre><code>&lt;Server <span class="variable">port=</span><span class="string">"8005"</span> <span class="variable">shutdown=</span><span class="string">"SHUTDOWN"</span>&gt;
-</code></pre><service name="Catalina">        
+&lt;Service <span class="variable">name=</span><span class="string">"Catalina"</span>&gt;        
 
-<pre><code>            &lt;Connector <span class="variable">port=</span><span class="string">"8080"</span> <span class="variable">protocol=</span><span class="string">"HTTP/1.1"</span>
+            &lt;Connector <span class="variable">port=</span><span class="string">"8080"</span> <span class="variable">protocol=</span><span class="string">"HTTP/1.1"</span>
            <span class="variable">connectionTimeout=</span><span class="string">"20000"</span>
            <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
            &lt;Connector <span class="variable">port=</span><span class="string">"8009"</span> <span class="variable">protocol=</span><span class="string">"AJP/1.3"</span> <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
@@ -98,8 +97,9 @@
 
   &lt;/Host&gt;
 &lt;/Engine&gt;
-</code></pre><p>  </p></service><br><p></p>
-<h4 id="server的初始化和启动">server的初始化和启动</h4>
+  &lt;/Service&gt;
+&lt;/Server&gt;
+</code></pre><h4 id="server的初始化和启动">server的初始化和启动</h4>
 <p>在整个server的启动过程中，首先要确定一个<strong>LifeCycle</strong>生命周期的概念<br><img src="/images/2015/3/lifecycle.png" alt="Alt text"><br>每个组件都会直接或间接继承抽象类LifecycleBase，LifecycleBase会实现Lifecycle接口，实现了init(),start(),stop(),destroy()等模板方法，在对应模板方法中会调用相应的抽象方法诸如initInternal，startInternal()等，这样保证了tomcat能统一管理所有组件的生命周期</p>
 <p>server的启动是从BootStrap的main方法开始<br><img src="/images/2015/3/bootstrap_main.png" alt="Alt text"></p>
 <p>主要代码是如下3句代码</p>
