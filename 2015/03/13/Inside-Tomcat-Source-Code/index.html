@@ -143,6 +143,7 @@
 <li><strong>观察者设计模式</strong>：也叫发布-订阅模式，也就是事件监听机制，通常在某个事件发生的前后会触发一些操作，其中控制组件生命周期的Lifecycle就是这种模式的体现。LifecycleListener代表的是抽象观察者，定义了一个lifecycleEvent方法，该方法就是当主题发生变化时要执行的方法，当组件的生命周期发生变化时，会调用LifecycleSupport的fireLifecycleEvent方法，该方法调用所有监听者的lifecycleEvent方法<br><img src="/images/2015/3/observer_fireLifecycle.png" alt="Alt text"></li>
 <li><strong>Command命令</strong>：主要用来封装命令，把发出命令的责任和执行命令的责任分开，在tomcat中connector和container之间，server创建HttpConnector对象，然后创建命令HttpProcessor对象，并把它交给ContainerBase容器进行处理，这样ContainerBase可以通过不同的方式来处理请求</li>
 <li><strong>责任链</strong>：这个设计模式也是Tomcat中Container设计的基础，整个容器就是通过一个链连接在一起的，这个链一直将请求正确地传递给最终处理请求的那个servlet。责任链模式实际上是很多对象由每个对象对其下家的引用而连接起来形成的一条链，请求在这条链上传递，在tomcat中，请求从Engine到host在到context一直到Wrapper都是通过这条链进行传递</li>
+<li><strong>模板方法</strong>: 当我们知道一个算法的所有步骤以及每个步骤的执行顺序，但是不知道所有步骤具体如何执行。模板方法模式会将不知道如何执行的步骤封装成<strong>abstract method</strong>, 并提供抽象类来控制工作流，具体实现类会实现具体的<strong>abstract method</strong>来实现特定的执行步骤。在tomcat中整个server组件的启动运用了模板方法，在LifecycleBase中init()中控制了组件的初始化流程，并会调用抽象方法initInternal()，该方法会有具体的实现类来实现以此调用组件特定的初始化方法<br><img src="/images/2015/3/template_init.png" alt="Alt text"></li>
 </ol>
 <h4 id="参考链接">参考链接</h4>
 <ol>
