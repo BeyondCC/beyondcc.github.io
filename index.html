@@ -1,355 +1,1352 @@
-<!DOCTYPE html>
-<html>
 
+ <!DOCTYPE HTML>
+<html >
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>cc</title>
-  <meta name="description" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-  <meta name="generator" content="cc">
-
+  <meta charset="UTF-8">
   
-  
-  
+    <title>cc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="cc">
+    
 
-  
-  
-<script type="text/javascript">
-    <script>
-    var _hmt = _hmt || [];
-(function() {
-   var hm = document.createElement("script");
-     hm.src = "//hm.baidu.com/hm.js?b841658af2e970bd69e5fb7885f82aa1";
-       var s = document.getElementsByTagName("script")[0]; 
-         s.parentNode.insertBefore(hm, s);
+    
+    <meta name="description" content="hello">
+<meta property="og:type" content="website">
+<meta property="og:title" content="cc">
+<meta property="og:url" content="http://yoursite.com/">
+<meta property="og:site_name" content="cc">
+<meta property="og:description" content="hello">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cc">
+<meta name="twitter:description" content="hello">
 
- })();
-</script>
 
-</script>
-
+    
+    <link rel="alternative" href="/atom.xml" title="cc" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 
 </head>
 
-<!--
-<body class="home-template">
--->
-<body class="home-template">
-<div id="perspective" class="perspective effect-movedown">
-  <div class="container">
-    <!-- wrapper -->
-    <div class="wrapper">
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="cc" title="cc"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="cc">cc</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
 
-      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
-    <div class="vertical">
-        <div class="site-head-content inner">
-             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
-            <h1 class="blog-title">cc</h1>
-            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
-        </div>
-    </div>
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/03/13/Inside-Tomcat-Source-Code/" title="Inside Tomcat Source Code" itemprop="url">Inside Tomcat Source Code</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2015-03-13T02:53:34.000Z" itemprop="datePublished"> Published Mar 13 2015</time>
+    
+  </p>
 </header>
-
-      
-<main class="content" role="main">
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-03-13T02:53:34.000Z" itemprop="datePublished">
-          Mar 13 2015
-      </time>
-    
-    
-    | 
-    <a href='/tags/tomcat/'>tomcat</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2015/03/13/Inside-Tomcat-Source-Code/">Inside Tomcat Source Code</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        这两周主要看了下Tomcat7的源代码，若有所悟，遂写下本篇文章记录下我对Tomcat部分核心功能的理解，主要包括以下3个方面
-
-Tomcat是如何启动的
-一次http请求，是如何转换成Request对象
-从Request对象的生成到Request对象传递给Filter或者servlet，中间做了什么处理
-
-Tomcat server 的内部结构
-
-默认情况下Server组件会包含一个service组件，service组件会包含Engi
-      
-      </p>
-      
-      <p>
-          <a href="/2015/03/13/Inside-Tomcat-Source-Code/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2015-02-11T11:53:50.000Z" itemprop="datePublished">
-          Feb 11 2015
-      </time>
-    
-    
-    | 
-    <a href='/tags/human-history/'>human history</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2015/02/11/BriefHistoryOfHumanKind-md/">人类简史</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
+    <div class="article-content">
         
-物理-》化学-》生物-》历史
-人类历史三次革命
+        <p>这两周主要看了下Tomcat7的源代码，若有所悟，遂写下本篇文章记录下我对Tomcat部分核心功能的理解，主要包括以下3个方面</p>
+<ol>
+<li>Tomcat是如何启动的</li>
+<li>一次http请求，是如何转换成Request对象</li>
+<li>从Request对象的生成到Request对象传递给Filter或者servlet，中间做了什么处理</li>
+</ol>
+<h4 id="Tomcat_server_的内部结构">Tomcat server 的内部结构</h4>
+<p><img src="/images/2015/3/tomcat_server_structure.png" alt="Alt text"></p>
+<p>默认情况下Server组件会包含一个service组件，service组件会包含Engine和Connector组件，Engine组件会包含host组件，host组件会包含Context组件</p>
+<p>首先我们要看一下这几个组件各自的功能</p>
+<ol>
+<li><p><strong>Server</strong><br>它代表整个容器,是 Tomcat 实例的顶层元素.由 org.apache.catalina.Server 接口来定义. 它用来控制 Tomcat 实例的启动与停止。在 Tomcat 启动阶段,通过 server 来控制的各 个 service 的启动。启动完成后它启动独立的端口监听,用来接收 Tomcat 的停止命令。 当接收到停止命令后它会触发 service 的停止与注销。并提供一个接口让其它程序能够访 问到这个 Service 集合、同时要维护它所包含的所有 Service 的生命周期,包括服务 初始化、服务终结、Service 定位与查找</p>
+</li>
+<li><p><strong>Service</strong><br>Service 是一个抽象的服务封装组件,是 web 容器的一个独立的运行单元。它具备了一个 web 容器所需要的监听连接,servlet 查找与调用,Session 创建与管理,日志服务等常用 功能。Service 只是在 Connector 和 Container 外面多包一层,把它们组装在一起,向外 面提供服务,一个 Service 可以设置多个 Connector,但是只能有一个 Engine Container 容器,将多个 Connector 收到的连接发送到同一个 Engine Container 进行处理，在tomcat中默认有两个connector，一个负责Http请求的处理，另一个负责AJP请求的处理</p>
+</li>
+<li><p><strong>Connector</strong><br>主要负责服务器的端口监听、接收浏览 器的发过来的 TCP 连接请求,将收到的 HTTP 请求信息转换成 Request 对象,并将 Request 提交 Engine 组件去执行,将执行完成后所得到的 Response 对象转换 HTTP 的响应信息返回 给浏览器。</p>
+</li>
+<li><p><strong>Engine</strong><br>Engine是Servlet处理器的一个实例，即servlet引擎, 一个Engine可以包含多个host</p>
+</li>
+<li><p><strong>host</strong><br>Engine容器中用于接收请求并进行相应处理的主机或虚拟主机，一个host可以对应多个Context</p>
+</li>
+<li><p><strong>Context</strong><br>每一个webapp最终都是以Context的形式存在，每个Context对应一个根路径和请求URL路径,host:port/path</p>
+</li>
+</ol>
+<p>每个组件的包含关系已经在<strong>server.xml</strong>中进行了对应的声明，在整个server初始化的过程中，会解析该文件生成对应的组件对象并确定组件之间的包含关系, server.xml 核心代码如下所示</p>
+<pre><code>&lt;Server <span class="variable">port=</span><span class="string">"8005"</span> <span class="variable">shutdown=</span><span class="string">"SHUTDOWN"</span>&gt;
+&lt;Service <span class="variable">name=</span><span class="string">"Catalina"</span>&gt;        
 
-7W年前：认知革命，出现有认知能力的人类
-1W两千年前： 农业革命，出现更加复杂的社会结构
-500年前，工业革命，人类的生产力得到了跨越式的发展
+            &lt;Connector <span class="variable">port=</span><span class="string">"8080"</span> <span class="variable">protocol=</span><span class="string">"HTTP/1.1"</span>
+           <span class="variable">connectionTimeout=</span><span class="string">"20000"</span>
+           <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
+           &lt;Connector <span class="variable">port=</span><span class="string">"8009"</span> <span class="variable">protocol=</span><span class="string">"AJP/1.3"</span> <span class="variable">redirectPort=</span><span class="string">"8443"</span> /&gt;
+           &lt;Engine <span class="variable">name=</span><span class="string">"Catalina"</span> <span class="variable">defaultHost=</span><span class="string">"localhost"</span>&gt;
+             &lt;Host <span class="variable">name=</span><span class="string">"localhost"</span>  <span class="variable">appBase=</span><span class="string">"webapps"</span>
+        <span class="variable">unpackWARs=</span><span class="string">"true"</span> <span class="variable">autoDeploy=</span><span class="string">"true"</span>&gt;
+          &lt;Valve <span class="variable">className=</span><span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="variable">directory=</span><span class="string">"logs"</span>
+           <span class="variable">prefix=</span><span class="string">"localhost_access_log."</span> <span class="variable">suffix=</span><span class="string">".txt"</span>
+           <span class="variable">pattern=</span><span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;
+
+  &lt;/Host&gt;
+&lt;/Engine&gt;
+  &lt;/Service&gt;
+&lt;/Server&gt;
+</code></pre><h4 id="server的初始化和启动">server的初始化和启动</h4>
+<p>在整个server的启动过程中，首先要确定一个<strong>LifeCycle</strong>生命周期的概念<br><img src="/images/2015/3/lifecycle.png" alt="Alt text"><br>每个组件都会直接或间接继承抽象类LifecycleBase，LifecycleBase会实现Lifecycle接口，实现了init(),start(),stop(),destroy()等模板方法，在对应模板方法中会调用相应的抽象方法诸如initInternal，startInternal()等，这样保证了tomcat能统一管理所有组件的生命周期</p>
+<p>server的启动是从BootStrap的main方法开始<br><img src="/images/2015/3/bootstrap_main.png" alt="Alt text"></p>
+<p>主要代码是如下3句代码</p>
+<pre><code>bootstrap.<span class="keyword">init</span>() 
+</code></pre><p>该行代码主要做了以下几件事</p>
+<ol>
+<li>设置catalina.home、catalina.base系统属性</li>
+<li>创建commonLoader、catalinaLoader、sharedLoader类加载器</li>
+<li><p>初始化Bootstrap对象</p>
+<pre><code>daemon.load(<span class="keyword">args</span>);
+</code></pre></li>
+</ol>
+<p>主要干了两件事</p>
+<ol>
+<li>创建一个Digester对象，将当前对象压入Digester里的对象栈顶，根据inputSource里设置的文件xml路径及所创建的Digester对象所包含的解析规则生成相应对象，并调用相应方法将对象之间关联起来。</li>
+<li><p>依次调用每个组件的init方法</p>
+<pre><code> daemon.start();
+</code></pre></li>
+</ol>
+<p>该代码会链式调用每个组件的start()方法，在start方法中对调对应的startInternal方法</p>
+<p>在这里要重点讲一下Connector，Tomcat默认会开启两个Http8080端口接收http请求，和AJP8009端口接收ajp请求<br>Connector会有一个JIOEndpoint对象<br><strong>JIoEndpoint</strong>：处理请求的TCP链接，一个监听器线程拿到一个socket，并创建工作线程来处理该请求，更高级的Endpoint会使用队列复用线程</p>
+<p>在JIOEndpoint的startInternal方法中会开启两个线程一个是<strong>Acceptor</strong>线程监听tcp/ip连接并传递给对应的processor和一个异步超时的线程，如下图429行和432行所示<br><img src="/images/2015/3/start_acceptor_thread.png" alt="Alt text"></p>
+<p>当整个tomcat启动会有如下几个线程在运行，其中除了main以外其他都为守护线程<br><img src="/images/2015/3/thread_after_boot.png" alt="Alt text"></p>
+<h4 id="http请求的处理">http请求的处理</h4>
+<p>前面提到了Acceptor线程是监听tcp/ip链接，我们看一下具体代码如下图所示，216行从serversocket获取连接请求，231行会调用processSocket处理该请求</p>
+<p><img src="/images/2015/3/acceptor.png.png" alt="Alt text"></p>
+<p>JIoEndpoint中的processSocket方法会新开一个线程处理请求，保证当前线程不会被阻塞，如528行所示<br><img src="/images/2015/3/process_socket.png" alt="Alt text"></p>
+<p>SocketProcessor会调用AbstractConnectionHandler的process方法,该方法会调用AbstractHttp11Processor的process方法, 在该方法中会解析请求的请求行，请求头部并封装成Tomcat内置对象org.apache.coyote.Request，整个处理流程的时序图如下所示<br><img src="/images/2015/3/socket_process_sequence_diagram.png" alt="Alt text"></p>
+<h4 id="Request请求的转发处理">Request请求的转发处理</h4>
+<p><img src="/images/2015/3/tomcat_value_forward.png" alt="Alt text"><br>这张图描述当用户发出的请求被解析成Request对象后，会被protocolHandler传递给Engine的Pipeline的ValueA，然后传递给ValueB，EngineValue以此类推最终会传递给context的FilterChain和Servlet，在servlet中生成的response会逆向进行传递直至传给protocolHandler<br><img src="/images/2015/3/value_forward_diagram.png" alt="Alt text"></p>
+<p>在StandardWrapperValue的invoke方法中会将request请求传递给FilterChain处理如下图205行所示<br><img src="/images/2015/3/filter_dofilter.png" alt="Alt text"></p>
+<p>ApplicationFilterChain的doFilter()方法<br><img src="/images/2015/3/dofilter.png" alt="Alt text"></p>
+<p>在doFilter方法中会调用internalDoFilter方法，如果filterChain还有下一个filter，则调用下一个filter的doFilter方法，若当前filter为最后一个filter，则会调用servlet的service方法如下图305行所示<br><img src="/images/2015/3/servlet_service.png" alt="Alt text"></p>
+<p>在整个Request传递处理的过程中我们会注意到有一个叫<strong>Value</strong>的对象，Tomcat7中一个管道pipeline可以包含多个阀（Valve），这些阀共分为两类，一类叫基础阀（通过getBasic、setBasic方法调用），一类是普通阀（通过addValve、removeValve调用）。管道都是包含在一个容器当中，所以API里还有getContainer和setContainer方法。一个管道一般有一个基础阀（通过setBasic添加），可以有0到多个普通阀（通过addValve添加）。<br>所有的阀类都会实现org.apache.catalina.Valve这个接口</p>
+<p>这里可以看出容器内的Engine、Host、Context、Wrapper容器组件的实现的共通点：<br>1.这些组件内部都有一个成员变量pipeline，因为它们都是从org.apache.catalina.core.ContainerBase类继承来的，pipeline就定义在这个类中。所以每一个容器内部都关联了一个管道。<br>2.都是在类的构造方法中设置管道内的基础阀。<br>3.所有的基础阀的实现最后都会调用其下一级容器（直接从请求中获取下一级容器对象的引用）的getPipeline().getFirst().invoke()方法，直到Wrapper组件。因为Wrapper是对一个Servlet的包装，所以它的基础阀内部调用的过滤器链的doFilter方法和Servlet的service方法。</p>
+<p>自此对于服务器的启动，以及浏览器发出一次socket连接请求之后，tomcat容器内部的运转处理流程已经有了一个大致的理解</p>
+<h4 id="设计模式">设计模式</h4>
+<p>可以想象Tomcat源代码运用了大量的设计模式来组织自己的代码使代码有更好的可读性，程序有更好地扩展性，其中Tomcat源代码主要运用了以下几个设计模式</p>
+<ol>
+<li><strong>facade门面模式</strong>：在一个大的系统中有多个子系统时，子系统如果不想暴露自己的内部数据给其他系统，那么就可以设计一个门面，把对象封装起来，其他系统通过该门面访问对应对象的数据，其中对Request，Response的封装，以及ApplcationContext到ServletContext的封装都用到了该模式</li>
+<li><strong>观察者设计模式</strong>：也叫发布-订阅模式，也就是事件监听机制，通常在某个事件发生的前后会触发一些操作，其中控制组件生命周期的Lifecycle就是这种模式的体现。LifecycleListener代表的是抽象观察者，定义了一个lifecycleEvent方法，该方法就是当主题发生变化时要执行的方法，当组件的生命周期发生变化时，会调用LifecycleSupport的fireLifecycleEvent方法，该方法调用所有监听者的lifecycleEvent方法<br><img src="/images/2015/3/observer_fireLifecycle.png" alt="Alt text"></li>
+<li><strong>Command命令</strong>：主要用来封装命令，把发出命令的责任和执行命令的责任分开，在tomcat中connector和container之间，server创建HttpConnector对象，然后创建命令HttpProcessor对象，并把它交给ContainerBase容器进行处理，这样ContainerBase可以通过不同的方式来处理请求</li>
+<li><strong>责任链</strong>：这个设计模式也是Tomcat中Container设计的基础，整个容器就是通过一个链连接在一起的，这个链一直将请求正确地传递给最终处理请求的那个servlet。责任链模式实际上是很多对象由每个对象对其下家的引用而连接起来形成的一条链，请求在这条链上传递，在tomcat中，请求从Engine到host在到context一直到Wrapper都是通过这条链进行传递</li>
+<li><strong>模板方法</strong>: 当我们知道一个算法的所有步骤以及每个步骤的执行顺序，但是不知道所有步骤具体如何执行。模板方法模式会将不知道如何执行的步骤封装成<strong>abstract method</strong>, 并提供抽象类来控制工作流（即为模板方法，被声明为final，子类无法覆盖），具体实现类会实现具体的<strong>abstract method</strong>来实现特定的执行步骤。在tomcat中整个server组件的启动运用了模板方法，在LifecycleBase中init()中控制了组件的初始化流程，并会调用抽象方法initInternal()，该方法会有具体的实现类来实现以此调用组件特定的初始化方法<br><img src="/images/2015/3/template_init.png" alt="Alt text"></li>
+</ol>
+<h4 id="参考链接">参考链接</h4>
+<ol>
+<li><a href="http://tyrion.iteye.com/?page=2" target="_blank" rel="external">Tomcat7源码解析</a></li>
+<li><a href="http://book.douban.com/subject/1943128/" target="_blank" rel="external">How Tomcat Works</a></li>
+<li><a href="http://book.douban.com/subject/19965586/" target="_blank" rel="external">深入分析Java Web技术内幕</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
 
 
-科学家喜欢用拉丁语对新事物进行命名，属+ 事物名，豹属狮子， 智人，科（family）： 猫科，
-
-智人属于巨大猿科，homo ludaofu
-智力行走，女性产道变小，但是人类的脑袋越变越大，人类从2W年前处于食物链的底端（没有工具，体力
-      
-      </p>
-      
-      <p>
-          <a href="/2015/02/11/BriefHistoryOfHumanKind-md/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
+  <div class="article-tags">
   
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2014-12-30T13:10:10.000Z" itemprop="datePublished">
-          Dec 30 2014
-      </time>
-    
-    
-    | 
-    <a href='/tags/conclude/'>conclude</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2014/12/30/2014-12-30-i-am-just-a-child/">i_am_just_a_child</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        最近看的年终总结出现的比较多得可能就是下面这个推文了
-
-My goal for 2015 is to accomplish the goals of 2014 which I should have done in 2013 because I made a promise in 2012 &amp; planned in 2011
-
-想一想2014年就这么过去了，发现自己发际线上升了，长老了，长残了，真是尼玛一入IT深似海啊，但是今年
-      
-      </p>
-      
-      <p>
-          <a href="/2014/12/30/2014-12-30-i-am-just-a-child/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2014-12-01T11:44:51.000Z" itemprop="datePublished">
-          Dec 1 2014
-      </time>
-    
-    
-    | 
-    <a href='/tags/Refactor/'>Refactor</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2014/12/01/2014-12-01-refactor/">Refactor</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        最近在写代码的时候，发现之前写的代码各种ifelse嵌套，类函数过多，函数体过长，函数变量命名不清晰，遂决定重构之，于此同时看了重构这本书，收益颇多！
-整本书从data，method，class，module，system的这几个层面去讲如何重构，重构的基本原则以及注意事项依次来编写高质量，可维护，可扩展的代码，主要读书笔记如下：
-何为重构
-
-在不改变软件可观察行为的前提之下，使用一系列重构方法，对软件内部结构进行调整，提高代码的可理解
-      
-      </p>
-      
-      <p>
-          <a href="/2014/12/01/2014-12-01-refactor/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2014-08-17T03:49:42.000Z" itemprop="datePublished">
-          Aug 17 2014
-      </time>
-    
-    
-    | 
-    <a href='/tags/plan/'>plan</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2014/08/17/2014-08-17-tarqie-plan/">tarqie-plan</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        从7月17号入职实习到今天已经完完整整一个月了，但是感觉自己是浑浑噩噩度过来得，于是反复思考之后发现是因为没给自己制定计划，没给自己下挑战，so果断地参考网上一篇讲量化成长的文章之后，开始制定自己的计划，开始新的征程
-Tarqie
-
-目标
-熟悉IOS基本开发流程
-学完《social psychology》
-坚持锻炼，提高精力
-提升算法
-
-
-量化
-跟完stanford ios公开课
-看完最后2个week的社会心理学视频
-看完Princet
-      
-      </p>
-      
-      <p>
-          <a href="/2014/08/17/2014-08-17-tarqie-plan/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2014-08-14T03:13:34.000Z" itemprop="datePublished">
-          Aug 14 2014
-      </time>
-    
-    
-    | 
-    <a href='/tags/mvc-iOS/'>mvc iOS</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2014/08/14/2014-08-14-mvc/">mvc</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
-Model
-
-encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）
-
-功能：封装App要用到的数据并定义相关的逻辑操作，Model和其他model存在相关re
-      
-      </p>
-      
-      <p>
-          <a href="/2014/08/14/2014-08-14-mvc/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <article class="post">
-    <header class="post-header">
-      <span class="post-meta">
-      <time datetime="2014-08-05T12:52:40.000Z" itemprop="datePublished">
-          Aug 5 2014
-      </time>
-    
-    
-    | 
-    <a href='/tags/pyschology-cc/'>pyschology cc</a>
-    
-    
-</span>
-      <h2 class="post-title"><a href="/2014/08/05/2014-08-05-socialpsychology/">socialpsychology</a></h2>
-    </header>
-    <section class="post-excerpt">
-      <p>
-      
-        在coursera上上了差不多4个week的social psychology, 配合之前买得社会心理学买得中文书，感觉真心涨知识，今天主要对之前学得知识做个整理顺带温习一遍！
-fundamental attribution error基本归因错误
-
-the fundamental attribution error is the tendency to  underestimate the influence of situation
-      
-      </p>
-      
-      <p>
-          <a href="/2014/08/05/2014-08-05-socialpsychology/" class="excerpt-link">Read More...</a>
-      </p>
-      
-    </section>
-  </article>
-  
-  <nav class="pagination" role="pagination">
-    
-    <span class="page-number">Page 1 of 1</span>
-    
-  </nav>
-</main>
-
-
-      
-<footer class="site-footer">
-  
-  <div class="inner">
-     <section class="copyright">All content copyright <a href="/">cc</a> &copy; 2014 &bull; All rights reserved.</section>
-     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  <span></span> <a href="/tags/tomcat/">tomcat</a>
   </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
 </footer>
 
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
-<script type="text/javascript" src="/js/index.js"></script>
-<script type="text/javascript" src="/js/menu.js"></script>
+    </article>
 
 
 
 
 
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/11/BriefHistoryOfHumanKind-md/" title="人类简史" itemprop="url">人类简史</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-11T11:53:50.000Z" itemprop="datePublished"> Published Feb 11 2015</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <ol>
+<li>物理-》化学-》生物-》历史</li>
+<li><p>人类历史三次革命</p>
+<ul>
+<li>7W年前：认知革命，出现有认知能力的人类</li>
+<li>1W两千年前： 农业革命，出现更加复杂的社会结构</li>
+<li>500年前，工业革命，人类的生产力<br>得到了跨越式的发展</li>
+</ul>
+</li>
+<li><p>科学家喜欢用拉丁语对新事物进行命名，属+ 事物名，豹属狮子， 智人，科（family）： 猫科，</p>
+</li>
+<li>智人属于巨大猿科，homo ludaofu</li>
+<li>智力行走，女性产道变小，但是人类的脑袋越变越大，人类从2W年前处于食物链的底端（没有工具，体力也没有动物大）到现在的处于食物链的顶端</li>
+</ol>
+<h3 id="认知革命">认知革命</h3>
+<ul>
+<li>掌握火：黑暗中给予了光源，有效武器，烧掉森林可以得到食物，可以用火使用小麦，土豆之类的食物，消灭食物中的细菌</li>
+<li>4,5万年前，船舶的出现，导致人类可以到达澳大利亚，日本，台湾等岛屿，</li>
+<li>针的出现使智人可以用动物的皮毛缝制衣服，靴子等，油灯（动物油脂）使智人可以进各种洞穴</li>
+<li><p>由于人类大脑结构的微小变革导致人类拥有认知，学习，交流的能力，自此人类真正历史得以出现，虽然人类结构微笑的改变但直接导致人类在不久的将来得以master of the world</p>
+<p><strong>语言的力量</strong></p>
+</li>
+</ul>
+<ul>
+<li>共享外部信息，传递大量的外部信息</li>
+<li>gossip闲话，ape猿，尼安德特人，不说闲话很难于其他人一起群居，闲话通常关注人们的错误行为</li>
+<li>表达不存在的事物，传说，神话，宗教，“一个狮子正在守护我们的部落，我们在某一天应该向这头狮子祈祷来获得部落的安宁” ；拥有相同信仰或者故事的人群可以更好地生活在一起，他们一起劳动，对抗外敌等</li>
+<li>社会本能仅仅只用于自己亲密的人，当社会成员过多的时候，社会秩序会变混乱，闲聊人数不会超过150，人数过多的时候可以凭借虚构的语言进行合作，比如信仰，宗教，教堂（基于统一信仰）</li>
+</ul>
+<p>有限责任公司：<br>公司是虚构的，让群众相信它的存在，当公司欠债的时候，应该找公司还钱而不是所有者</p>
+<p>客观事实（树木，狮子），想象事实（国家，公司，法律等，都是人创造出来的）让大部分人去接触这个事实</p>
+<p>语言让人类可以谈论现实中不存在的能力，众多智人的合作基于故事 </p>
+<p><strong>社会行为的显著变革</strong>：必须基于<strong>基因</strong>的改变，猴子永远不可能聚集在一起商讨会议，所以现代智人的出现从某种程度上来说是因为 基因的改变</p>
+<p><strong>认知革命的结论</strong>：</p>
+<blockquote>
+<ol>
+<li>共享更多外界信息的能力</li>
+<li>闲话理论，传递大量信息的能力</li>
+<li>虚构理论，传递大量事实上不存在的能力，开启陌生人合作的前提</li>
+</ol>
+</blockquote>
+<h2 id="群体特征">群体特征</h2>
+<p>聚集在一起的个体，思想和感情上会全部朝着一个方向迈进，自身个性消失殆尽，转向形成一种集体心理</p>
+<ul>
+<li>当个体处于群体之中的时候，由于数量的考虑，约束自己的责任感会降低</li>
+<li>群体行为的传染现象（从众）</li>
+<li>个体丧失有意识的人格，会遵从他人的建议或提示</li>
+<li>群体情感可能会走向极端，在没有正确的引导之下</li>
+<li>群体可以英勇无畏，为了自由，为了民主，也可以走向犯罪（反对异己者）</li>
+</ul>
+<p>原始社会，主要是采集和狩猎，人类在自己觅食的时候，需要更多的知识，心理能力，体能会更加欠打，但是农业和工业的出现，人类越来越以来外界，人类的大脑变的越来越小，觅食者比后来的农民更加健康，主要是饮食丰富，可以获取多种食物，获取丰富的营养，维生素，维他命，历史未必是从坏变好，中间可能失去了很多美好的事情</p>
+<h2 id="万物有灵，宗教基础">万物有灵，宗教基础</h2>
+<p><strong>泛灵论</strong>： 万物都是有灵魂的，世界有无形的存在，灵魂，泛灵论者相信人是可以跟动物，天空，河流进行沟通，人与世界中其他的事物是没有等级的，是可以相互沟通交流</p>
+<p><strong>有神论</strong>：神站在最高等级，神下面是万物</p>
+<p>手之洞穴：科学上如果知道少数的事情，最好说不知道，因为你可能在你既有的知识体系下进行天马星空的想象</p>
+<p>一种说法：在没有农业之前，人类是没有理由去发动战争，因为不需要去争抢生产资料，私有资产</p>
+<h3 id="人类最大的骗局">人类最大的骗局</h3>
+<p>为什么会发生农业革命？</p>
+<p>小麦从中东的少数地区传播到世界各地， </p>
+<p>麦子驯化了人类，进入了农业生活</p>
+<p>种植生活比打猎生活更惨：弯腰种田，洪水，寄生虫，自然灾害</p>
+<p>由于缺少农作物会因为饥荒死去，所以人类有时会不得不因为掠夺，暴力死去，</p>
+<p>单位面积小麦产生的食物比打猎产生的更多，剩余的食物可以养活更多的人</p>
+<p>物种演化成功就要看DNA拷贝的传播数量<br>农业革命，使更多的人在恶劣的环境生存了下来</p>
+<p>饮食结构改变，只吃小麦，免疫系统降低，传染病的传播 ,导致婴儿死亡率上升，</p>
+<p><strong>可以想象</strong>：当代社会中奢侈品往往成为必需品， 设备给我们带了方便，提升了效率，<br>人类一直在寻找方式使生活更加简单，但是使自己过上了苦难的生活。</p>
+<p>驯化动物主要是为了生存，最可怜的动物可能就是鸡鸭羊了，</p>
+<p>削掉猪的鼻子让猪不要乱动以此来养膘，奶牛极坏不断的怀孕，剩下小牛，分开小牛，挤母牛乃，这就会使母牛不断怀孕，对人类而言，农业革命史巨大的进步，但是对于动物个体而言是巨大的灾难</p>
+<p>影响：<br>编故事让一群人合作，公司掌管人通过演讲让一群人干一件事情，<br><strong>想象秩序</strong>：image order</p>
+<p>汉莫拉比法典：</p>
+<p>独立宣言：最著名的一行：造物者创造了平等的人们，</p>
+<p>社会秩序基于想象,人权只是我们发明并<br>相信的故事<br>基督教之所以存在2-000年，是因为都相信几句圣经里面的故事</p>
+<p>现在的人都不想接受管理他们生活的秩序是想象这一事实，</p>
+<p>浪漫消费主义：<br><strong>浪漫主义</strong>：竟可能多的精力，体验多种多样的社会关系，摆脱日常生活的束缚<br><strong>消费主义</strong>：为了得到快乐，必须买产品或者服务，旅游业实质在卖给你经历，拓展我们的视野，增加我们的阅历</p>
+<p>稳定想象秩序：</p>
+<blockquote>
+<ol>
+<li>嵌入我们的生活环境</li>
+<li>嵌入到我们最深层最珍视的愿望里</li>
+<li>不仅嵌入到个人的欲望之中，而是无数人之中</li>
+</ol>
+</blockquote>
+<h2 id="人类的大一统">人类的大一统</h2>
+<p>人类70亿人能和平地生活在这个世界上主要因为以下三件事：<br>金钱，帝国，宗教</p>
+<p><strong>帝国</strong>是一个政治体制，包含两个重要特征</p>
+<ol>
+<li>统治相当数量的民族，文化多元</li>
+<li>灵活的边界，可以吞噬消化一个又一个国家，而不改变国家的基本特征</li>
+</ol>
+<p>一个帝国的毁灭导致另外一个帝国的形成。<br>虽然帝国的形成需要战争，屠杀成千上万的人类，但是也会留下艺术，哲学，雕塑等,文化，语言，世界观等遗产</p>
+<p>第一个帝国萨尔贡帝国，帝国梦想:政府这<br>征服世界，波斯帝国：政府世界史为了大家的利益，帝国的存在散播统一的言论是为了更好的统治整个帝国</p>
+<p>统治世界不是为了自己，是为了自由主义，为了传播基督教。<br>帝国即征服了人们，与此同时对文化，价值观的传播起了非常大的作用</p>
+<p> 印度：板球和茶都是英国传入</p>
+<p> <strong>宗教</strong></p>
+<p>今天常认为宗教造成的是歧视，争端，分裂，但是在金钱和帝国之外，宗教正是第三种让人类统一的力量，正因为社会秩序和阶级都是想象的产物，他们十分脆弱，宗教的重要性就在于让这些脆弱的架构有了超人类的合法性，有了宗教之后就能说法律并不只是人类自己的设计和想象，而是来自一种绝对的神圣最高权柄，这样一来，某些基本的法则不会发生动摇，从而确保社会稳定</p>
+<p> 包含人类规范和价值观的一种系统,它建立在对超人类秩序的信仰上，</p>
+<ul>
+<li>必须信仰超人类的秩序，秩序必须普世皆同，不论时空而永恒为真</li>
+<li>建立规范和价值观，让人类去相信</li>
+</ul>
+<p><strong>宗教</strong>必须具有普世特质和推广（坚定地将信念传播给他人ßß）特质</p>
+<p> 万物有灵相信万物是有灵气的，精灵，鬼怪是真是存在的<br> 多神论信仰多种强大的种类诸如神，放弃所有渴求，接触失败，</p>
+<p><strong>神论者</strong> ：人们可以和宇宙的最高权力做各种交易,以换的健康，幸运和战争的胜利</p>
+<p>一神论：世界上只有一个最高权力的神，上帝是无所不能的<br>二元论：正义和邪恶。神允许人类自由的一直，才会导致邪恶<br>地狱和天堂 </p>
+<p>多神论，一神论，二元论是相互联系存在的，普通民众即相信一个神也相信多个神</p>
+<p>新的宗教：遵守自然法则<br><strong>佛教</strong>印度乔达摩王子寻找脱离受苦的方法,困难不是因为地质灾害，战争，瘟疫，不是因为神的心血来潮，发现苦难是一个人自己思想模式的行为所致,痛苦的人无法摆脱会更加痛苦，快乐的人会追逐更强烈的快乐，要让思想完全理解并接受事物的当前状态,<strong>冥想技巧</strong>：全神贯注于一件事，而不是集中我本该经历的是什么，<strong>痛苦源于欲望</strong>:完全摆脱苦难的唯一方法就是完全摆脱渴求(训练思想能经历现实原本的状态,而不会渴求现实变成其他东西)</p>
+<p>社会主义，封建主义，自由主义，资本主义，纳随主义现都称为意识形态，从某种角度来看也是宗教(都有自己最权威的圣经)<br>一个建立于对一个超人类秩序的信仰智商的人类规范和价值观的系统。</p>
+<p><strong>历史</strong><br> 历史就是这样的一团混沌，无法解释的斩钉截铁，无法预测的十拿九稳，在同一时间，有多方力量相互影响，相互牵制，只要某方力量有了较小的改变，结果就会有较大的不同。</p>
+<ul>
+<li>一级混沌系统：不会因为预测发生改变：天气</li>
+<li>二级混沌系统：会因为预测发生改变：市场，政治</li>
+</ul>
+<p>历史的铁则就是事后看来无可避免的事情，在当时看来总是毫不明显。</p>
+<p>当代看来最不可能发生的事情，常常就是最后成真的事情</p>
+<p><strong>释迦摩尼</strong><br>认为人遇到事情通常会产生欲念，而欲念总会造成不满，遇到不喜欢的事情，就想躲开，遇到喜欢的事情，就像维持并增加这份愉悦，正因如此，人心就永远不满，永远不安</p>
+<p>解决方法：看清事物本质，而不是侧重事物给自己带来的感受，通过冥想来感受事物的本质来排除所有欲求，无欲无求，不会有新的痛苦</p>
+<p><strong>人文主义宗教</strong>崇拜人类的宗教</p>
+<ul>
+<li>自由人文主义:人性是每个人都有的一种品质,推崇个人主义</li>
+<li>社会人文主义：人类是奉行集体主义而不是个人主义</li>
+<li>进化人文主义：纳粹,人类种族差别的存在,只应该留下最优良的人中，保护弱等民族是破坏了自然选择</li>
+</ul>
+<p><strong>文化</strong>并不是某些人为了剥削他人而设计出的阴谋，而是因为种种机缘巧合所出现的心理寄生虫，从而出现之后开始剥削所有受到感染的人</p>
+<h2 id="科技革命">科技革命</h2>
+<p><strong>科学革命回馈回路</strong>科学不只需要研究来取得进展,政治和经济机构提供资源，作为回馈，科学研究提供新力量用于其他事物以获得新的资源</p>
+<ul>
+<li>现代科学假定我们一无所知，在科学的发展过程中，可能验证我们的常识或者推翻我们的知识</li>
+<li>观测和数学的中心地位,对世界进行观测，用数学工具将观测联系形成综合理论以获取新的知识</li>
+<li>获得新的力量: 现代科学不仅是创造理论和了解事物如何运转，现代科学运用这些理论是为了开发新的技术</li>
+</ul>
+<p>科学的责任在于发现无知，发现人类不知道大部分重要问题的答案，过去的知识体系倾向于神是知道所有知识，在圣经或者教材中找不到答案的问题都是不重要的问题，是不会影响人类幸福和生存</p>
+<p>中国火药的诞生并没有快速促进大炮，火箭的产生，主要因为没有意识到军事科技能够救国或者致富</p>
+<p>统治者资助教育机构，仅仅只是为了传播传统知识，强化现行秩序，巩固国家的稳定，所以会出现各式各样的国家标准教材</p>
+<p>依赖经验观测与数学粘合<br>心理学统计学</p>
+<p><strong>大数法则</strong>：law of large numbers<br>对单一事件结果的预测，可以在大量相似事件存在的前提下，用其平均值来预测该事件的结果</p>
+<p><strong>贫穷</strong>：</p>
+<ul>
+<li>社会性贫穷：穷人和富人之间的机会上的差异,穷人没有给予富人一样的机会</li>
+<li>生物性贫穷:这不是相对的，还是绝对,由于缺乏食物和庇护，生物体处于危险之中</li>
+</ul>
+<p>现代科学和欧洲帝国主义之间的历史纽带是现代早期欧洲的科学家和征服者，一是探索，而是征服</p>
+<h2 id="资本主义的贪婪">资本主义的贪婪</h2>
+<p>资本主义经济是人类惊人想象力的结果，是我们对未来的信任<br>用那些现在不存在也许未来也不会存在的钱来资助现在的一系列活动。</p>
+<p>自私的人们对增加死人收益的强烈诉求是集体财富和社会福利的基础</p>
+<p>资本主义将资本和仅仅是财富的东西区别开来,财富是各种各样的东西，而资本是指投资到生产中的金钱、商品和资源</p>
+<p>新科学的发现是政府相信未来会更加美好，因此印制更多的钞票来贷款给新技术的发明</p>
+<h2 id="工业革命">工业革命</h2>
+<p>资本主义的快速发展主要依赖于对未来的信任，但是经济的增长还需要能量和原材料，但是一旦能量和原材料消耗殆尽的时候</p>
+<p>工业革命中最重要的事情不是某个特定的原材料或能源的发现,而是人类新的领悟，我们事实上被庞大的几乎无限量的能量和原材料所包围，我们能做的事情就是寻找和发明方法驾驭和控制这些新的能量，我们缺的不是能量，而是驾驭它的方法</p>
+<p><strong>蒸汽机</strong> 你用到某种燃料，你燃烧某种燃料，产生的气体推动活塞，活塞跟着推动某个物体</p>
+<p>工业革命是一场巨大的变革，证明人类可以无限制的使用能源，唯一的限制是我们的无知</p>
+<p>圈养的动物不仅仅需要空气，水，食物，还需要情感和生理的需求<br>消费主义是因为工业革命导致的生产力的提高，越来越多的商品需要人消耗，消费主义导致人类的肥胖，因此锻炼也在刺激人类消费</p>
+<p>富人忙于投资，穷人则忙于消费</p>
+<h2 id="永久革命">永久革命</h2>
+<ul>
+<li>时间革命（整个世界确定了统一的时间）</li>
+<li>世界和平的主要原因是战争的代价急剧增高,战争利润减少（人力，科技以及复杂的经济社会），和平的利润增加</li>
+<li>争夺旧式财富（石油，煤矿),才是当今世界战争频繁繁盛的的地方</li>
+<li>后现代不必以暴力或和平为特征,最重要的是前所未有的活力</li>
+</ul>
+<p><strong>任何两个相邻的政体，都会有某种可能，让他们在一年之内向对方宣战</strong></p>
+<p>科技革命的出现并没有给人类带来幸福</p>
+<p><strong>主观幸福感</strong> 快乐是自身内在感受到得某些东西,它或者是当下的感觉或者是对自己的生活状态长期满足的感觉或感情</p>
+<p>快乐并不受客观因素影响，如财富、健康甚至社会,快乐只是期望得到满足</p>
+<p>我们越渴求，就越痛苦</p>
+<p>道德和政治的障碍是生物工程和基因工程前进的最大障碍</p>
+<p>In the future, what we want to be and to behance what</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/human-history/">human history</a>
   </div>
-</div>
-
-<nav  class="outer-nav top horizontal">
-
-          <a class="icon-home"  href="/"><span>Home</span></a>
-
-          <a class="icon-news"  href="/archive"><span>Archive</span></a>
-
-          <a class="icon-mail"  href="/about/"><span>About</span></a>
-
-</nav>
 
 </div>
-</body>
-</html>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/30/2014-12-30-i-am-just-a-child/" title="i_am_just_a_child" itemprop="url">i_am_just_a_child</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-30T13:10:10.000Z" itemprop="datePublished"> Published Dec 30 2014</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近看的年终总结出现的比较多得可能就是下面这个推文了</p>
+<blockquote>
+<p>My goal for 2015 is to accomplish the goals of 2014 which I should have done in 2013 because I made a promise in 2012 &amp; planned in 2011</p>
+</blockquote>
+<p>想一想2014年就这么过去了，发现自己发际线上升了，长老了，长残了，真是尼玛一入IT深似海啊，但是今年也干了很多事情，也在慢慢养成一些不错的习惯</p>
+<h2 id="学习">学习</h2>
+<ol>
+<li>不同类型的书籍还是可以开拓或者促进个人的思维方式</li>
+<li>经典术书籍还是得看英文的，现在有时候看英文pdf其实挺幸福的</li>
+<li>读完书之后基本没有温故而知新，没有仔细地去思考和总结，部分书籍知识停留在看了一遍的层面上，没有花时间去实践（唯一欣慰的一点还是养成了用马克飞翔记笔记的习惯）</li>
+<li>重读书质量，而不是读书数量和速度</li>
+</ol>
+<h2 id="生活">生活</h2>
+<ol>
+<li><blockquote>
+<p>life is like a  box of chocolates.You never know what you will get</p>
+</blockquote>
+</li>
+<li>周末越来越不喜欢呆在家里了（不喜欢打扫卫生，这是个坏习惯，以后的改），有个好室友周末能陪你去任何地方真是一件开心的事情</li>
+<li>公司的健身房为什么不利用起来呢</li>
+</ol>
+<h2 id="工作">工作</h2>
+<ol>
+<li>还是喜欢跟逗逼一起工作啊，太高冷地一起工作起来感觉好累啊，好想说高冷NMB啊，能不能笑一个啊</li>
+<li>好想每个岗位都体验一把，可惜部门和老大只会注重自己的利益啊，谁管你的发展啊，实习虽然打杂居多，但是自己可以学习的东西还是挺多的，每天还是得踏踏实实过，天道酬勤，享受过程</li>
+<li>开年换实习，不解释</li>
+</ol>
+<h2 id="其他">其他</h2>
+<p>要哭。。。。。。</p>
+<h2 id="感想">感想</h2>
+<ol>
+<li>one step one print</li>
+<li>认真干活，增强抗干扰能力，远离社交</li>
+<li>都尼玛24了，我竟然还认为我是个孩子！！！</li>
+</ol>
+<h2 id="The_goal_for_2015">The goal for 2015</h2>
+<ol>
+<li>3月份之前刷完LeetCode（必须完成）</li>
+<li>减肥（必须完成）</li>
+<li>熟练运用git，vim</li>
+<li>暑假远行</li>
+<li>买mac，读万卷书，行万里路，阅女无数</li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/conclude/">conclude</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/01/2014-12-01-refactor/" title="Refactor" itemprop="url">Refactor</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-01T11:44:51.000Z" itemprop="datePublished"> Published Dec 1 2014</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>最近在写代码的时候，发现之前写的代码各种ifelse嵌套，类函数过多，函数体过长，函数变量命名不清晰，遂决定重构之，于此同时看了<a href="http://book.douban.com/subject/5333564/" target="_blank" rel="external">重构</a>这本书，收益颇多！</p>
+<p>整本书从data，method，class，module，system的这几个层面去讲如何重构，重构的基本原则以及注意事项依次来编写高质量，可维护，可扩展的代码，主要读书笔记如下：</p>
+<h3 id="何为重构">何为重构</h3>
+<blockquote>
+<p>在不改变软件可观察行为的前提之下，使用一系列重构方法，对软件内部结构进行调整，提高代码的可理解性，降低扩展成本</p>
+</blockquote>
+<h3 id="重构的原动力">重构的原动力</h3>
+<p>当代码的设计无法帮助我们轻松添加新的特性（<strong>无法扩展</strong>），因此需要重构程序使程序满足以下条件：</p>
+<ul>
+<li>容易阅读</li>
+<li>所有逻辑都只在唯一地点指定</li>
+<li>新的改动不会危及现有行为</li>
+<li>尽可能简单表达条件逻辑</li>
+</ul>
+<p>在重构的过程中我们会发现<strong>Middle Tier</strong>(中间层)会被经常使用，使用中间层的好处主要体现在以下几个方面：</p>
+<ul>
+<li>允许逻辑共享，单个函数在多个地方进行调用</li>
+<li>分开解释意图和实现(类和函数的名字可以表达自己的意图)</li>
+<li>隔离变化</li>
+<li>封装条件逻辑</li>
+</ul>
+<h3 id="何时重构">何时重构</h3>
+<blockquote>
+<p>如果每次对代码的更改都会做重复的事情，那么就必须重构</p>
+</blockquote>
+<p><strong>修改接口</strong></p>
+<blockquote>
+<p>对于对象而言可以分开修改软件模块的实现和接口，对于模块的实现可以任意进行修改而不影响他人，但是不能随意更改接口</p>
+</blockquote>
+<h3 id="重构方法">重构方法</h3>
+<h4 id="简化条件表达式">简化条件表达式</h4>
+<p>当函数中如果出现多层if，else嵌套，一长串的switch语句，程序的可读性是非常差的，我们可以用以下几点重构之：</p>
+<ul>
+<li>从if，then，else中<strong>分解条件表达式</strong>（提炼独立的函数），突出条件逻辑，更清楚的表明每个分支的作用（<strong>增加可读性，见其名知其意</strong>）</li>
+<li><strong>合并条件表达式</strong>（如果一系列条件测试得到相同的结果，那么将所有提交测试提炼成一个独立的函数）（<strong>减少条件表达式</strong>）</li>
+<li><strong>合并重复的条件片段</strong>条件表达式中每个分支都有相同的代码，在相同代码不随条件表达式的改变而改变的前提下，将相同代码移至条件表达式外（<strong>减少冗余代码</strong>）</li>
+<li><strong>以卫语句取代嵌套条件表达式</strong>使用卫语句表现所有的特殊情况，卫语句要么从函数中返回，要么抛出一个异常（针对单一出口的观点，最好在不影响代码可读性的情况下才使用）</li>
+<li><strong>以多态取代条件表达式</strong>：因为多态的出现，导致基于类型的switch语句和基于类型名称的if-else语句很少出现,对于多个if-else或者switch只用一个对基类的判断即可，那么在运行时中自动会调用相应类的方法（<strong>不必询问对象是什么，只管调用对应的的行为</strong>）（<strong>减少switch 的case语句</strong>）</li>
+<li><strong>引入null对象</strong>P260<ul>
+<li>实现一个空对象，覆盖基类的isNull方法（）返回true，</li>
+<li>在所有对对象判断是否为空的地方，直接调用isNull方法</li>
+<li>对空对象实现默认的空行为，这样可以不用判断是否为空，直接调用相应地函数（如果对象为空对象，那么会自动调用空行为）</li>
+<li>空对象可能会返回空对象</li>
+</ul>
+</li>
+<li><strong>引入断言</strong>增加代码可读性并且帮助调试</li>
+</ul>
+<p>对于简化条件表达式，我认为<a href="http://book.douban.com/subject/1951158/" target="_blank" rel="external">代码大全</a>讲了更多地简化技巧</p>
+<h4 id="Organizing_Data">Organizing Data</h4>
+<p>这一章更多地是侧重于不同情况下组织数据的一些技巧</p>
+<ul>
+<li><strong>将引用对象改为值对象</strong>值对象主要是不可变性，所以当确定一个引用对象不可变的时候，去掉setter方法，私有化成员变量，重写hashCode(集合类通过hashCode来快速定位对象的位置）和equals（来判断两者的地址是否相同）方法</li>
+<li><strong>用类替代类型码</strong>，人的血型可以用类来进行封装p220（类型码不影响主类）</li>
+<li><strong>用子类替代类型码</strong>，（类型码影响类的变化，可以用子类进行多态化处理,类的静态实例化函数通过类型码进行动态创建子类，子类实现抽象方法（getType）来返回正确地子类类型</li>
+<li><strong>用state/strategy取代类型码</strong>实质跟多态取代子类相似</li>
+</ul>
+<h4 id="Moving_Features_Between_Objects">Moving Features Between Objects</h4>
+<p>核心就是如何抽象公共部分，较少冗余代码</p>
+<ul>
+<li><strong>move method</strong>:将公共方法提取至基类</li>
+<li><strong>move field</strong></li>
+<li><strong>extra class</strong>（提炼类）</li>
+<li><strong>inline class</strong> (类内联化，将一个类的所有method和field都移入新的类)</li>
+<li><strong>hide delegate</strong>(隐藏委托关系) 在服务类建立客户所需的所有函数，用以隐藏委托关系Person Department Manager</li>
+<li><strong>remove middle man</strong> （移除中间人）（当客户端每次使用受托类的新特性的时候，都必须在服务端增加委托函数，所以新特性比较多得时候，客户端可以直接调用受托类</li>
+<li><strong>introduce foreign method</strong> 在客户类中建立一个函数，以第一参数形式传入一个服务类实例</li>
+</ul>
+<h4 id="简化函数调用">简化函数调用</h4>
+<p>最重要的还是给函数和参数取一个好名字把</p>
+<ul>
+<li><strong>rename method</strong></li>
+<li><strong>add parameter</strong></li>
+<li><strong>remove parameter</strong></li>
+<li><strong>将查询函数和修改函数分离</strong>（任何有返回值的函数都不应该有side effect，不要使一个函数同时包含查询和修改）</li>
+<li><strong>preserve whole object</strong>（保持对象的完整性，不用传递多个参数，可以传递一个对象，保持代码的整洁性）</li>
+<li><strong>以函数取代参数</strong></li>
+<li><strong>引入参数对象</strong>（都是为了缩短参数列长度）</li>
+<li><strong>remove setting  method</strong> （某个字段设置为final的，不可改变）</li>
+<li><strong>hide method</strong>（当一个函数如果不被其他类引用时）</li>
+<li><strong>以工厂函数取代构造函数</strong></li>
+<li><strong>封装向下转型</strong></li>
+<li><strong>以异常取代错误代码</strong></li>
+<li><strong>以测试取代异常</strong></li>
+</ul>
+<h4 id="处理继承关系">处理继承关系</h4>
+<p>这章侧重于如何处理子类和父类的field和method的关系</p>
+<ul>
+<li><strong>pull up field</strong> 字段上移</li>
+<li><strong>pull up method</strong> 函数上移</li>
+<li><strong>构造函数本体上移</strong></li>
+<li><strong>函数下移</strong></li>
+<li><strong>字段下移</strong></li>
+<li><strong>extract subclass</strong> 提炼子类</li>
+<li><strong>提炼超类</strong></li>
+</ul>
+<h2 id="感想">感想</h2>
+<p>是个人都能写出让机器看懂的代码，但并不是所有人能写出其他人能看懂的代码，所以培养良好的代码风格是一件非常主要的事情，今后可能会遵守下面三条规则去规范自己培养良好的编码习惯</p>
+<ul>
+<li>注意函数命名，代码风格(各个语言参看对应系统库的代码风格)，尽量写clean code</li>
+<li>在写代码之前，想好代码为什么这么写，这样写有什么好处，是否易于扩展，几个月之后自己是否还看得懂，别人是否看得懂</li>
+<li>找人code review，牛人对代码的认知以及整个项目的理解是跟自己不一样的，多问为什么这么设计以及这样设计的好处并思考这样设计的优缺点</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Refactor/">Refactor</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Refactor/">Refactor</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/17/2014-08-17-tarqie-plan/" title="tarqie-plan" itemprop="url">tarqie-plan</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-17T03:49:42.000Z" itemprop="datePublished"> Published Aug 17 2014</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>从7月17号入职实习到今天已经完完整整一个月了，但是感觉自己是浑浑噩噩度过来得，于是反复思考之后发现是因为没给自己制定计划，没给自己下挑战，so果断地参考网上一篇讲<a href="http://zh.lucida.me/blog/tarqie-a-quantized-continous-growing-approach/" target="_blank" rel="external">量化成长</a>的文章之后，开始制定自己的计划，开始新的征程</p>
+<h3 id="Tarqie">Tarqie</h3>
+<ul>
+<li>目标<ol>
+<li>熟悉IOS基本开发流程</li>
+<li>学完《social psychology》</li>
+<li>坚持锻炼，提高精力</li>
+<li>提升算法</li>
+</ol>
+</li>
+<li>量化<ol>
+<li>跟完stanford ios公开课</li>
+<li>看完最后2个week的社会心理学视频</li>
+<li>看完Princeton算法公开课</li>
+</ol>
+</li>
+<li>改进<ol>
+<li>早睡早起（12：00PM ~ 8：00AM）+ 每天跑步4圈</li>
+<li>阅读《社会心理学》中文版第八版</li>
+<li>每天抽一个小时看《Algorithms》，实现对应的数据结构和算法</li>
+<li>每一到两周写一篇blog，对所学知识做一个总结</li>
+</ol>
+</li>
+<li>验证<ol>
+<li>早睡早起 + 运动不间断</li>
+<li>学习能力增强，增加心理学知识</li>
+<li>逐步实现基本数据结构和算法</li>
+<li>熟悉IOS基本开发流程，完成mentor分配的任务</li>
+</ol>
+</li>
+</ul>
+<h3 id="总结">总结</h3>
+<p>在接下来的一个月正式开始实施该计划，just fighting！最后贴一张励志图<br><img src="/images/2014/8/whatgandisays.png" alt="Alt text"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/plan/">plan</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/plan/">plan</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/14/2014-08-14-mvc/" title="mvc" itemprop="url">mvc</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-14T03:13:34.000Z" itemprop="datePublished"> Published Aug 14 2014</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html" target="_blank" rel="external">IOS官方文档</a>的解释和<a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/downloads-2010-fall" target="_blank" rel="external">standford公开课</a>的课件，就发现原来在IOS中是这么回事</p>
+<h3 id="Model">Model</h3>
+<blockquote>
+<p>encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）</p>
+</blockquote>
+<p><strong>功能</strong>：封装App要用到的数据并定义相关的逻辑操作，Model和其他model存在相关relation（一对一，一对多，多对多等），数据要进行持久化（存在文件或者数据库中来进行重用），model只关心数据，只定义相关数据和操作，不去关心用户界面。</p>
+<p><strong>communication</strong>： 用户操作通过controller来更改Model，Model的相关数据的更改来通知Controoler去更新View</p>
+<h3 id="View">View</h3>
+<blockquote>
+<p>present information to the user (your controller’s minions)</p>
+</blockquote>
+<p><strong>功能</strong>：在应用程序中展示用户可以看见的界面以及相应相关用户操作，View视图的更新是通过Controller操作的,当然了视图是可以缓存数据来提升程序性能，视图应该是可复用和可配置化的，因此UIKit中提供了大量的View object，诸如TableView，ScrollView</p>
+<h3 id="Controller">Controller</h3>
+<blockquote>
+<p>tie the model to the view(How your model is presented to the user UI logic)</p>
+</blockquote>
+<p><strong>功能</strong>：是视图和模型的中间者，视图的更新都是控制器从model中取出数据进行更新</p>
+<ol>
+<li>mediating controller 中介控制器</li>
+<li>coordinating controller 协调控制器</li>
+</ol>
+<p>SmallTaclk中的MVC</p>
+<ul>
+<li>Composite： View object有多个视图嵌套组成</li>
+<li>Strategy:  controller object给一个或者多个view object实现策略，view object委托controller来处理相关的接口行为</li>
+<li>Observer:</li>
+</ul>
+<p><img src="/images/2014/8/traditional_mvc.gif" alt="Alt text"></p>
+<p>Cocoa中得MVC<br><img src="/images/2014/8/cocoa_mvc.gif" alt="Alt text"></p>
+<p>Cocode跟传统的MVC设计方式最大的不同在于把View和Model中得通信删去了，view不能观察model的数据状态的改变来更新自己的view，原因主要在于View和model设计成高度复用的Object，去掉view和object的联系就是内聚解耦的过程<br>其中官网是这么解释的：</p>
+<ul>
+<li>如果在程序中使用绑定机制，如果视图能直接观察到模型中的属性，那么NSController及其子类的优势（selection and placeholder）不会体现出来</li>
+<li>如果不使用绑定机制，对于一个已经存在的视图必须子类化来观察model的改变</li>
+</ul>
+<p>最后来看一下stanford这张图<br><img src="/images/2014/8/stanford_mvc.png" alt="Alt text"></p>
+<p>这张图把IOS中model，view，controller的关系阐述的真心简洁明了，鞭辟入里啊！！</p>
+<h4 id="Controller_and_View">Controller and View</h4>
+<ol>
+<li>controller通过outlet来控制view上面的object</li>
+<li>view通过target-action来controller来响应响应的事件</li>
+<li>controller来设置自己作为view的委托，实现view中控件对应的事件protocol</li>
+<li>controller总是view的data source，用Model信息来更新view或者根据view来收集model信息</li>
+</ol>
+<h4 id="Controller_and_model">Controller and model</h4>
+<p>Model主要是通过广播机制（KVO）来通知controller自身信息的更改</p>
+<h4 id="view_and_model">view and model</h4>
+<p>两者不应该有任何关系，The model should be UI independent.(理由前面已经叙述了)</p>
+<h3 id="MVC优点">MVC优点</h3>
+<ul>
+<li>代码重用（多个视图可以共享一个模型，主要因为我们已经把数据和业务logic从表示层分开了）</li>
+<li>更好地定义接口</li>
+<li>良好的扩展性</li>
+</ul>
+<h3 id="MVC缺点">MVC缺点</h3>
+<p>完全理解MVC模式不是特别容易（特别对于我等工程经验不足的人，有时候还是只能从表面意义上体会他的好处）</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/MVC-iOS/">MVC iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mvc-iOS/">mvc iOS</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/05/2014-08-05-socialpsychology/" title="socialpsychology" itemprop="url">socialpsychology</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-05T12:52:40.000Z" itemprop="datePublished"> Published Aug 5 2014</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>在coursera上上了差不多4个week的<a href="https://www.coursera.org/course/socialpsychology" target="_blank" rel="external">social psychology</a>, 配合之前买得社会心理学买得中文书，感觉真心涨知识，今天主要对之前学得知识做个整理顺带温习一遍！</p>
+<h3 id="fundamental_attribution_error基本归因错误">fundamental attribution error基本归因错误</h3>
+<blockquote>
+<p>the fundamental attribution error is the tendency to <strong> underestimate</strong> the influence of situational factors and <strong>overestimate</strong> the role of dispositional factors when explaining behavior. An example would be believing that people who are forced to do something against their wishes actually prefer to do it</p>
+</blockquote>
+<p>在解释他人行为的时候，主要低估了情景的因素而更多地归结于个人的特质，举个例子如下：</p>
+<ul>
+<li>actor-observer difference<ol>
+<li>如果个人获得成功，那么actor自己会认为这件事的成功是因为我的能力，而observer会认为是时势造英雄，有其他客观因素</li>
+<li>如果个人失败了，那么actor会更多地用情景来解释事情的失败，比方说没休息好啦，队友不给力啦，社会不公正啦</li>
+</ol>
+</li>
+</ul>
+<h3 id="原因">原因</h3>
+<p>出现基本归因错误的原因主要是我们通过自己的信息，态度，价值观去看待事物，我们形成了对各种事情的解释（归因），<strong>我们不是如实地对现实进行反应，而是根据我们对现实的解释做出反应。任何事情在我们身上都会进行加工</strong>，所以会产生偏见，仇视，分类等，想一想好可怜，被人鄙视，被仇视不是自己的分类，是别个第问题啊！</p>
+<h3 id="behavior_and_attitude">behavior and  attitude</h3>
+<ul>
+<li>态度和行为的相关性没有我们想象中的那么高（可能没有关系（牧师和其他人帮助伤者和美国餐馆招待中国华人的两个实验），可能有点关系（信用卡信用度和个人诚信问题）</li>
+</ul>
+<h3 id="认知失调理论_cognitive_dissonance（减少内心冲突，紧张和失调的本能倾向）">认知失调理论 cognitive dissonance（减少内心冲突，紧张和失调的本能倾向）</h3>
+<p>认知失调主要是由下面两个因素组成：</p>
+<ul>
+<li>在事情的发展过程中，产生了两个矛盾的想法并造成了一种内心不适的感觉（网上看到很好地衣服，买下来发现是渣渣）</li>
+<li>个人设法去减少或者避免这种紧张的感觉（9.9包邮买的嘛肯定不会好到哪里去啊）</li>
+</ul>
+<p>跟认知失调相关的有两种失调形式</p>
+<h3 id="two_flavors_of_dissonance">two flavors of dissonance</h3>
+<ul>
+<li>决策前失调 predecisional dissonance (失调影响到后面的决策) 吃虫电击实验（实验告诉你你必须选择吃虫或者被电击，二选一，这个时候心中不爽啊，内心失调不平衡了啊！所以在做决策的时候告诉自己是勇敢的，理应当受到痛苦来做出决策），先失调，后决策，中间是有一个内心活动变化的过程</li>
+<li>决策后失调 postdecisional dissonance （决策之后担心结果和自己期望的结果不一致产生的失调）（对已经下赌注的赌马人预测自己的胜率是远远高于未下注的） </li>
+</ul>
+<p>利用这个心理学知识，我们可以在试卷的最顶方写下不作弊声明，那么学生在做卷子的时候如果想作弊的话就会跟之前签得不作弊声明产生决策前失调，这样会降低学生的作弊率</p>
+<h3 id="自我知觉理论_self_perception_theory（本质上进行了归因）">自我知觉理论 self perception theory（本质上进行了归因）</h3>
+<p>什么是自我知觉呢？官方术语就是难以理解啊！咱可以这样想：</p>
+<ul>
+<li>个人对自己行为和行为产生的结果进行观察，从而开始知觉自己的态度，情绪，内心状态（认知自己的三观）</li>
+<li>如果个人感觉比较弱，含糊不清，这样会把自己置于观察者的位置（还没有形成三观，就会去看别人的三观是啥）</li>
+</ul>
+<h4 id="how_to_be_persuasive">how to be persuasive</h4>
+<ul>
+<li><strong>speaking quickly</strong> can enhance persuasion by making the source appear more intelligent, more knowledgeable, and more sincere.</li>
+<li>repetition increases persuasiveness <strong>during the first three or so times</strong>, but after that it rarely helps much and may even reduce persuasiveness if people become irritated hearing the message. Thus, although repetition is useful up to a point, the benefits of repetition are not endless.</li>
+</ul>
+<p><strong>两种说服的方式</strong></p>
+<ul>
+<li><strong>中心途径的说服 </strong><br>信息以事实，数据和论证为基础（这类信息会对那些与这一问题密切相关的人们更具说服力）</li>
+<li><strong>外周途径</strong><br>信息会使用美妙的音乐，田园般的场景，吸引人的模特等外部情景（适用与普通人）</li>
+</ul>
+<p>这就是为什么你会看到广告要么是帅哥美女来推销产品，那么就是一个科学家用数字，图标的形式来说服你来产品</p>
+<p><strong> the secret from the science of persuasion </strong></p>
+<ul>
+<li>互惠(reciprocity): 我们有义务回报来自他人的行为礼物或服务（服务员赠送礼物的数量，方式）</li>
+<li>稀缺(scarcity):说服事情是独一无二,</li>
+<li>权威（authority）: 听从可信的专家的意见</li>
+<li>一致(consistence): 白纸黑字的承诺</li>
+<li>喜欢（liking）:确保在开始谈正事之前，寻找自己与对方共同的地方,并且赞美</li>
+<li>普遍 (consensus): 当人不确定接下来该干什么的时候，就会根据别人的行为来决定自己的行为（75%的顾客重复使用这条毛巾）</li>
+</ul>
+<p><strong>social influence</strong></p>
+<p>在捐款的时候添加：即使一分钱也是有用的</p>
+<ul>
+<li>the foot-in-the-door得寸进尺（在人接受一个小的请求之后会同意一个更大的请求）</li>
+<li>the door-in-the-face（以退为进，先让对方拒绝一个巨大的要求，然后请求对方一个小要求）</li>
+<li>the low-ball 虚报低价（一旦人们承诺会履行请求，我们可以往这个请求中继续加内容）</li>
+</ul>
+<p>知道上述3个主要为了防止自己掉入上述3个坑</p>
+<h3 id="Obedience_&amp;_group_pressure_&amp;_conformity">Obedience &amp; group pressure &amp; conformity</h3>
+<p>1960年Milgram’s obdeience experiment</p>
+<ul>
+<li>无论被试人群的种族，国家，给定特定的情形和环境，大部分的人都会服从权威</li>
+<li>电击器：在实验室中研究攻击性行为</li>
+</ul>
+<h3 id="conformity从众">conformity从众</h3>
+<p>社会压力下的行为或信念的变化<br>背对电梯实验（在电梯里面，当实验者进电梯之后如果发现其他人背对着电梯，那么他也会跟着背对电梯），说出最短线条实验<br>女性相对于男性更容易从众<br><strong>  文化差异是影响人是否从众的主要原因（个人主义和集体主义）</strong></p>
+<p>不要忽视个人对群体从众行为的影响</p>
+<h3 id="去个体化_deindividuation">去个体化 deindividuation</h3>
+<p>4000人对一个企图自杀的人大喊快跳（在此过程中，个人不会认为是自己让自杀的人去跳楼，而认为这是大家都认可的，从而减少个人内心的负罪感）</p>
+<p>匿名，群体活动，性，毒品可能会使人们去个体化，并会产生黑暗的一面，群体事件，屠杀，暴力等（减少自己承担的责任）</p>
+<p>&lt;&lt;沉默的愤怒&gt;&gt;斯坦福监狱实验</p>
+<p>不能简单地将人分为好人，坏人，而忽视情景因素</p>
+<p>实验的情景因素：群体压力，权威人士，被分配的角色</p>
+<h3 id="群体影响">群体影响</h3>
+<p>群体间和群体内的影响<br>鼓励辩论，避免群体思维</p>
+<p>日本企业：级别最低的人员开始先发言</p>
+<p><strong>互动群体</strong>： 多个人技能互补产生最大的效益</p>
+<p><strong>名义群体</strong> ：虽然说多个人组成一个群体，实际上还是部分人在提出意见，做出决策（当一个人提出观点的时候是会妨碍其他人思考（惰性，不愿发生争执，权威））</p>
+<p>综合起来： 个人先思考独立解决或者思考问题（想出解决方案）+ 群体头脑风暴（思想的碰撞可以有助于解决之前的困惑）+最后个人继续独立完成自己的任务</p>
+<h3 id="Abelence_paradox（艾比林悖论）">Abelence  paradox（艾比林悖论）</h3>
+<p>无法处理意见一致<br><strong>自己想做的跟真实情况相反，但无力改变</strong>个人感觉这是大部分人都会面对的残忍的现实<br>人们采取的行动与他们真正最想要的背道而驰<br>（当面对钻戒和各种各样的礼物以及父母的肯定，自己可能选择嫁给自己不喜欢的人）</p>
+<ol>
+<li><strong>行动焦虑</strong> 做呢还是不做呢</li>
+<li>推卸责任不去做或者从众</li>
+<li>如果按照自己的想法做，会推测结果</li>
+</ol>
+<p>打破悖论需要众人的努力和勇气</p>
+<h3 id="categorical_thinking_类别化思维">categorical thinking 类别化思维</h3>
+<ul>
+<li>ingroup</li>
+<li>outgroup</li>
+</ul>
+<p>群体内相似，群体间的差异<br>个人会认为群体内部的成员更加有责任心，爱心，更愿意跟群体内部成员分享于协作。<br>这就是为什么出门在外会认老乡，认是不是校友，南北方，主要是将遇见的人分类了，跟自己有关系的人，没有关系的人</p>
+<p><strong>群际偏见</strong><br>当对群体进行分类之后，很容易对其他群体产生单一刻板的印象（台独势力，共和党与民进党），这要给他人贴上了对应的标签，就会形成对应的形象，并且这种印象是很难发生改变</p>
+<p>善意群体偏见（认为亚洲人擅长数学，非洲人擅长运动等等</p>
+<ol>
+<li>外群体同质化： 导致刻板印象的偏见</li>
+</ol>
+<p><strong> Change blindness</strong></p>
+<p>我们眼前的情景切换至另外一个情景时，我们会忽视重大的改变（一个人走开，另外一个人替补上，观众没有发现人已经换了）。</p>
+<p><strong> thin-slice judgement </strong></p>
+<p>短时间会对陌生人进行社会判断（10秒中产生第一印象，通常这种判断是不可靠和准确地，并且这个印象在短时间是难以会发生改变），社会判断非常迅速，并且有时非常准确（哪怕仅仅因为一张图片，根据长相判断是否是坏人，判断大选是否会获得胜利），并且有时社会判断会受特定的偏见和歪曲影响，一旦判断形成，可能会根深蒂固留在脑海中，并且自己会寻找证据来证明自己的判断是对的，长时间这种印象是不会发生任何改变的</p>
+<p><strong> Self-Fulfilling Prophecies  自我实现预言 </strong></p>
+<p>当个人如果定义了一个错误的事情，那么个人会采取行为来证明它的正确性，当你认为某个人很糟糕时，跟他相处越久，你会认为他越糟糕</p>
+<h3 id="Conflict，Peacemaking，Intervention">Conflict，Peacemaking，Intervention</h3>
+<h3 id="Bystander_intervention_in_emergencies">Bystander intervention in emergencies</h3>
+<p>紧急情况下的旁观者效应：当有其他旁观者在场时，人们往往不太可能进行干预</p>
+<p>旁观者的数量造成的不作为</p>
+<p>绝大多数人，在独自一人的时候，提供了帮助</p>
+<p>责任分散效应<br>可能认为别人会出手帮助，别人会做的更好，其实重点在于个人害怕会出丑</p>
+<p><strong>受害者应该干什么呢</strong></p>
+<ol>
+<li>大声呼救，阐述发生了什么事情，我需要帮助</li>
+<li>指定某一个人，说先生我需要你的帮助</li>
+<li>当指定的人感受到自己的责任时，如果他出手帮助，那么这个旁观者群体就会化被动为主动</li>
+</ol>
+<p><strong>总结</strong><br>当紧急情况发生的时候，个人主要不想当第一个人施救的人，他们并非是冷漠，绝情的，而是受到了情景的影响，比如旁观者数量，是否能判断情况的紧急程度</p>
+<h3 id="The_triggers_of_Aggression_攻击行为的诱因">The triggers of Aggression 攻击行为的诱因</h3>
+<p>攻击行为：意图伤害他人的身体行为或言语行为，包括由愤怒或敌意引发的攻击行为</p>
+<p>观看暴力电视节目，在某些情况下会引发攻击性行为</p>
+<p>击打枕头、尖叫不会有效地降低暴力行为</p>
+<p>小孩子的模仿学习能力</p>
+<p>看一个人得攻击性有多强，就看它他得表情</p>
+<p>除了媒体暴力之外，酒精，激素，带有暴力的图片或者文字，文化，炎热天气，拥挤的公交，作为个人是可以选择接触的事物来减少攻击行为</p>
+<h3 id="The_third_side">The third side</h3>
+<p>如果双方产生冲突，那么第三方的存在主要是帮助提醒各方，什么是最急需解决的，将双方带入解决问题的轨道上，避免双方发生进一步的冲突而导致不能产生真正意义上得和解</p>
+<p>当蜘蛛网可以合在一起，他们甚至可以停止狮子</p>
+<h3 id="principled_negotiation_原则性谈判">principled negotiation 原则性谈判</h3>
+<ul>
+<li>把人从问题上分割开来，不进行人生攻击</li>
+<li>着眼于根本利益，而不是口头立场</li>
+<li>产生多种选择，然后在决定怎么做</li>
+<li>最终结果的选择需要基于一些客观地标准，如市场价值，科学判断等</li>
+</ul>
+<h3 id="empathy同理心">empathy同理心</h3>
+<ol>
+<li>affective empathy 情感同理心：它与感受他人的情绪有关，有时也称为情感匹配<ul>
+<li>你开心，我开心</li>
+<li>你失望，我失望</li>
+</ul>
+</li>
+<li>cognitive empathy 认知同理心：设想他人的想法与感觉或者想象自己在那种情况下会作何感想，站在他人的角度看待问题</li>
+</ol>
+<p>培养自己的认知同理心，才能更好地与他人相处，偏见，愤怒，埋怨等消极因素也会随之变少</p>
+<h2 id="attractive">attractive</h2>
+<p>相似性在人际交往和恋爱中有着重要的影响力，物以类聚，人以群分</p>
+<ol>
+<li>年轻和教育程度</li>
+<li>种族和名族，个性，生活态度，经济情况 </li>
+</ol>
+<p>如果要弥补一件错事带来的伤害，必须要做5件积极向上的事情</p>
+<h3 id="irrational_behavior">irrational behavior</h3>
+<p> <strong>非理性行为</strong>：</p>
+<h4 id="visual_and_decision_illusion">visual  and decision  illusion</h4>
+<p>视觉错觉：即使人类有着大型脑机制（加工视觉），丰富的经验以及各种进化优势，但是对于斜塔错觉，魔方错觉，他们还是难以避免会出现视觉错觉</p>
+<h3 id="感想">感想</h3>
+<p>正确认知自我和认知他人并且没有偏见是一件非常困难的事情，首先不能用第一印象来看待他人（thin-slice judgement，可见有一副好脸蛋是一件多么重要的事情），和他人相处时，还要避免从众，不服从权威，群体间影响，群体内影响，这考验地是个人自制力，时刻保持清醒地头脑并且对待不同的事情能坚持自己的看法（看法还的是对的，中间可能会遭遇各种威逼利诱），我只想说好尼玛困难啊！！泪奔！！！撸代码去~~~ 最后贴一张结业照片<br><img src="/images/2014/12/social_psychology_certificate.jpg" alt="Alt text"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/psychology/">psychology</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/pyschology-cc/">pyschology cc</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/MVC-iOS/" title="MVC iOS">MVC iOS<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Refactor/" title="Refactor">Refactor<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/plan/" title="plan">plan<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/psychology/" title="psychology">psychology<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/human-history/" title="human history">human history<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/mvc-iOS/" title="mvc iOS">mvc iOS<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/pyschology-cc/" title="pyschology cc">pyschology cc<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/conclude/" title="conclude">conclude<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Refactor/" title="Refactor">Refactor<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/plan/" title="plan">plan<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="http://yoursite.com/about" target="_blank" title="cc">cc</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+  </body>
+ </html>
