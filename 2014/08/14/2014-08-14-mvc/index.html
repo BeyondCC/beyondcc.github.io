@@ -4,40 +4,40 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>cc</title>
+    <title>mvc | cc</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="cc">
     
 
-    
-    <meta name="description" content="title: mvcdate: 2014-08-14 11:13:34 +0800comments: truecategories: MVC iOStags: [mvc] [iOS]
-keywords: mvc
-其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
+    <meta name="keywords" content="mvc">
+    <meta name="description" content="其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
 Model
 
-encapsulate d">
+encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）
+
+功能：封装App要用到的数据并定义相关的逻辑操作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cc">
-<meta property="og:url" content="http://yoursite.com/2015/03/16/2014-08-14-mvc/">
+<meta property="og:title" content="mvc">
+<meta property="og:url" content="http://yoursite.com/2014/08/14/2014-08-14-mvc/">
 <meta property="og:site_name" content="cc">
-<meta property="og:description" content="title: mvcdate: 2014-08-14 11:13:34 +0800comments: truecategories: MVC iOStags: [mvc] [iOS]
-keywords: mvc
-其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
+<meta property="og:description" content="其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
 Model
 
-encapsulate d">
+encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）
+
+功能：封装App要用到的数据并定义相关的逻辑操作">
 <meta property="og:image" content="/images/2014/8/traditional_mvc.gif">
 <meta property="og:image" content="/images/2014/8/cocoa_mvc.gif">
 <meta property="og:image" content="/images/2014/8/stanford_mvc.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cc">
-<meta name="twitter:description" content="title: mvcdate: 2014-08-14 11:13:34 +0800comments: truecategories: MVC iOStags: [mvc] [iOS]
-keywords: mvc
-其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
+<meta name="twitter:title" content="mvc">
+<meta name="twitter:description" content="其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了IOS官方文档的解释和standford公开课的课件，就发现原来在IOS中是这么回事
 Model
 
-encapsulate d">
+encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）
+
+功能：封装App要用到的数据并定义相关的逻辑操作">
 
 
     
@@ -98,14 +98,14 @@ encapsulate d">
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/03/16/2014-08-14-mvc/" title="" itemprop="url"></a>
+      <a href="/2014/08/14/2014-08-14-mvc/" title="mvc" itemprop="url">mvc</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://yoursite.com/about" title="cc" target="_blank" itemprop="author">cc</a>
 		
   <p class="article-time">
-    <time datetime="2015-03-16T07:58:29.000Z" itemprop="datePublished"> Published Mar 16 2015</time>
+    <time datetime="2014-08-14T03:13:34.000Z" itemprop="datePublished"> Published Aug 14 2014</time>
     
   </p>
 </header>
@@ -114,13 +114,11 @@ encapsulate d">
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords:_mvc"><span class="toc-number">1.</span> <span class="toc-text">keywords: mvc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">1.2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller"><span class="toc-number">1.3.</span> <span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_View"><span class="toc-number">1.3.1.</span> <span class="toc-text">Controller and View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_model"><span class="toc-number">1.3.2.</span> <span class="toc-text">Controller and model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view_and_model"><span class="toc-number">1.3.3.</span> <span class="toc-text">view and model</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC优点"><span class="toc-number">1.4.</span> <span class="toc-text">MVC优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC缺点"><span class="toc-number">1.5.</span> <span class="toc-text">MVC缺点</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller"><span class="toc-number">3.</span> <span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_View"><span class="toc-number">3.1.</span> <span class="toc-text">Controller and View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_model"><span class="toc-number">3.2.</span> <span class="toc-text">Controller and model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view_and_model"><span class="toc-number">3.3.</span> <span class="toc-text">view and model</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC优点"><span class="toc-number">4.</span> <span class="toc-text">MVC优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC缺点"><span class="toc-number">5.</span> <span class="toc-text">MVC缺点</span></a></li></ol>
 		
 		</div>
 		
-		<p>title: mvc<br>date: 2014-08-14 11:13:34 +0800<br>comments: true<br>categories: MVC iOS<br>tags: [mvc] [iOS]</p>
-<h2 id="keywords:_mvc">keywords: mvc</h2>
-<p>其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html" target="_blank" rel="external">IOS官方文档</a>的解释和<a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/downloads-2010-fall" target="_blank" rel="external">standford公开课</a>的课件，就发现原来在IOS中是这么回事</p>
+		<p>其实之前个人对于MVC的设计模式只是一个很懵懂的认识，自从看了<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html" target="_blank" rel="external">IOS官方文档</a>的解释和<a href="http://web.stanford.edu/class/cs193p/cgi-bin/drupal/downloads-2010-fall" target="_blank" rel="external">standford公开课</a>的课件，就发现原来在IOS中是这么回事</p>
 <h3 id="Model">Model</h3>
 <blockquote>
 <p>encapsulate data and basic behaviors，What your application is （but not how it  is displayed ）</p>
@@ -180,6 +178,16 @@ encapsulate d">
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/MVC-iOS/">MVC iOS</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mvc/">mvc</a>
+  </div>
 
 </div>
 
@@ -187,7 +195,7 @@ encapsulate d">
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2015/03/16/2014-08-14-mvc/" data-title="cc" data-tsina="2334037240" class="share clearfix">
+	  <div data-url="http://yoursite.com/2014/08/14/2014-08-14-mvc/" data-title="mvc | cc" data-tsina="2334037240" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -200,11 +208,19 @@ encapsulate d">
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2014/08/17/2014-08-17-tarqie-plan/" title="tarqie-plan">
+  <strong>上一篇：</strong><br/>
+  <span>
+  tarqie-plan</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2015/03/13/Inside-Tomcat-Source-Code/"  title="Inside Tomcat Source Code">
+<a href="/2014/08/05/2014-08-05-socialpsychology/"  title="socialpsychology">
  <strong>下一篇：</strong><br/> 
- <span>Inside Tomcat Source Code
+ <span>socialpsychology
 </span>
 </a>
 </div>
@@ -213,7 +229,7 @@ encapsulate d">
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/03/16/2014-08-14-mvc/" data-title="" data-url="http://yoursite.com/2015/03/16/2014-08-14-mvc/"></div>
+	<div class="ds-thread" data-thread-key="2014/08/14/2014-08-14-mvc/" data-title="mvc" data-url="http://yoursite.com/2014/08/14/2014-08-14-mvc/"></div>
 </section>
 
 
@@ -223,7 +239,7 @@ encapsulate d">
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords:_mvc"><span class="toc-number">1.</span> <span class="toc-text">keywords: mvc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">1.2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller"><span class="toc-number">1.3.</span> <span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_View"><span class="toc-number">1.3.1.</span> <span class="toc-text">Controller and View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_model"><span class="toc-number">1.3.2.</span> <span class="toc-text">Controller and model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view_and_model"><span class="toc-number">1.3.3.</span> <span class="toc-text">view and model</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC优点"><span class="toc-number">1.4.</span> <span class="toc-text">MVC优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC缺点"><span class="toc-number">1.5.</span> <span class="toc-text">MVC缺点</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Model"><span class="toc-number">1.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-number">2.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controller"><span class="toc-number">3.</span> <span class="toc-text">Controller</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_View"><span class="toc-number">3.1.</span> <span class="toc-text">Controller and View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Controller_and_model"><span class="toc-number">3.2.</span> <span class="toc-text">Controller and model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#view_and_model"><span class="toc-number">3.3.</span> <span class="toc-text">view and model</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC优点"><span class="toc-number">4.</span> <span class="toc-text">MVC优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MVC缺点"><span class="toc-number">5.</span> <span class="toc-text">MVC缺点</span></a></li></ol>
  
   </div>
 
@@ -236,6 +252,8 @@ encapsulate d">
 	<p class="asidetitle">Categories</p>
 		<ul>
 		
+		  
+			<li><a href="/categories/MVC-iOS/" title="MVC iOS">MVC iOS<sup>1</sup></a></li>
 		  
 		
 		  
@@ -258,6 +276,10 @@ encapsulate d">
 <div class="tagslist">
 	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/mvc/" title="mvc">mvc<sup>1</sup></a></li>
+			
 		
 			
 				<li><a href="/tags/pyschology/" title="pyschology">pyschology<sup>1</sup></a></li>
